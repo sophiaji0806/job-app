@@ -1,5 +1,5 @@
 /* ============================================================
-   纪子悦 · 求职工作台  app.js
+   求职工作台 Job Portal  app.js
    数据层 + 设置(DeepSeek) + Tab 导航 + 各模块渲染
    ============================================================ */
 'use strict';
@@ -115,86 +115,29 @@ const state = {
 /* ---------------- 种子数据（首版，模块1） ---------------- */
 const SEED = {
   career: [
-    { id:'c-risk',     title:'信贷风控 · 金融资产减值', icon:'🛡', desc:'IRB 内部评级、PD/LGD/ECL、IFRS9 减值、五级分类', roles:['Fintech 金融分析师','财务BP','财务分析'], strength:'强匹配', meta:'140亿信贷审阅 / 拨备+12pp / 评级95%+' },
-    { id:'c-valuation', title:'估值建模', icon:'📊', desc:'DCF/FCFF/WACC、可比公司法、OPM、Black-Scholes、DLOM、CAPM', roles:['PE/VC 投资分析','投行承做','财务BP'], strength:'强匹配', meta:'20+项股权投资 / 20余只基金 / 40%提效' },
-    { id:'c-control',   title:'内控与合规', icon:'🧾', desc:'SOX / C-SOX、穿行测试、控制测试、风险评估矩阵、ISA540', roles:['财务BP','内控/风控岗'], strength:'强匹配', meta:'6大内控循环 / 30+控制点 / 重大缺陷整改' },
-    { id:'c-data',      title:'经营与财务数据分析', icon:'📈', desc:'SQL、Python、Power BI、SPSS、财务建模、自动化', roles:['互联网商业分析','产品经理(金融)','财务分析'], strength:'强匹配', meta:'SQL 10万+凭证 / Python 提效40% / VBA+SQL 50%' },
-    { id:'c-gaap',      title:'合并报表 · 会计准则', icon:'🗂', desc:'合并抵消、IFRS/US GAAP、新收入准则、金融工具分类', roles:['财务分析','财务BP'], strength:'强匹配', meta:'200+笔抵消 / 双准则合规 / 10+份审计报告' },
-    { id:'c-ai',        title:'AI · 数字化', icon:'🤖', desc:'Python/SQL 自动化实战 + 正在学习的后端/Agent 项目', roles:['互联网商业分析','数据岗','产品经理(金融)'], strength:'转岗·经历少', meta:'诚实标注：学习中的 agent/后端，主打自动化与学习力' }
+    { id:'c-risk',     title:'信贷风控 · 金融资产减值', icon:'🛡', desc:'IRB 内部评级、PD/LGD/ECL、IFRS9 减值、五级分类', roles:['Fintech 金融分析师','财务BP','财务分析'], strength:'强匹配', meta:'示例：存量信贷全量审阅 / 拨备覆盖率改善 / 评级准确率提升' },
+    { id:'c-valuation', title:'估值建模', icon:'📊', desc:'DCF/FCFF/WACC、可比公司法、OPM、Black-Scholes、DLOM、CAPM', roles:['PE/VC 投资分析','投行承做','财务BP'], strength:'强匹配', meta:'示例：参与 4 个项目的其中 1 个模块 / 输出估值底稿' },
+    { id:'c-control',   title:'内控与合规', icon:'🧾', desc:'SOX / C-SOX、穿行测试、控制测试、风险评估矩阵、ISA540', roles:['财务BP','内控/风控岗'], strength:'强匹配', meta:'示例：参与 2 个流程优化 / 输出测试底稿 / 整改跟踪' },
+    { id:'c-data',      title:'经营与财务数据分析', icon:'📈', desc:'SQL、Python、Power BI、SPSS、财务建模、自动化', roles:['互联网商业分析','产品经理(金融)','财务分析'], strength:'强匹配', meta:'示例：SQL 日常取数 / Python 脚本自动化 / 每月 5 张报表' },
+    { id:'c-gaap',      title:'合并报表 · 会计准则', icon:'🗂', desc:'合并抵消、IFRS/US GAAP、新收入准则、金融工具分类', roles:['财务分析','财务BP'], strength:'强匹配', meta:'示例：参与集团合并报表 / 内部往来对账 / 抵消分录整理' },
+    { id:'c-ai',        title:'AI · 数字化', icon:'🤖', desc:'Python/SQL 自动化实战 + 正在学习的后端/Agent 项目', roles:['互联网商业分析','数据岗','产品经理(金融)'], strength:'转岗·经历少', meta:'示例：个人练习脚本 / 课程作业项目，主打自动化与学习力' },
+    { id:'c-ipo',       title:'港股IPO · 投行承做', icon:'🏦', desc:'港股主板递表项目财务核查、历史财务信息核验、招股书财务信息核对、管理层访谈与穿行、现场走访、存货监盘', roles:['投行承做 / IBD','ECM','审计 / 财务尽调'], strength:'新增·深度有限', meta:'示例：参与 1 个项目的其中 1 个模块 / 抽样与核对底稿' }
   ],
   recs: [
     { label:'第一梯队 · 强匹配', items:[
-      { role:'财务BP / 财务分析', why:'你的银行风控、估值建模、经营分析、合并报表四块能力天然贴合财务BP——既要懂业务又要懂财务，恰好是你在 PwC 多年的主战场', match: 90, gateway:'低' },
-      { role:'Fintech 金融分析师', why:'IFRS9/IRB/ECL 是 Fintech 信贷风控的硬核对口，金融资产减值经历在全球金融科技公司直接可用', match: 88, gateway:'中' },
+      { role:'财务BP / 财务分析', why:'你的数据分析、估值建模、经营分析、合并报表四块能力天然贴合财务BP——既要懂业务又要懂财务，转型阻力最小', match: 90, gateway:'低' },
+      { role:'Fintech 金融分析师', why:'IFRS9/IRB/ECL 是金融风控方向的硬核对口，相关知识与项目经验可直接迁移', match: 88, gateway:'中' },
       { role:'互联网商业分析', why:'SQL/Python/Power BI + 财务建模 + 拆解驱动因子的能力，转商业分析只需把「财务语言」翻译成「业务语言」', match: 85, gateway:'中' }
     ]},
     { label:'第二梯队 · 需补知识', items:[
       { role:'PE/VC 投资分析', why:'DCF/OPM/可比公司/DLOM 估值功底扎实，是硬加分；但缺投资机构实习/实操与 deal 经验，需补', match: 75, gateway:'高(门槛)' },
       { role:'产品经理(金融)', why:'懂金融+懂数据，但缺产品方法论与案例，建议从金融产品岗位切入', match: 68, gateway:'中' },
-      { role:'AI / 数据方向', why:'有 SQL/Python 基础与自动化实战，但缺 AI/agent 项目；用学习中的后端Agent资料补足，转岗是机会', match: 62, gateway:'中' }
+      { role:'AI / 数据方向', why:'有 SQL/Python 基础与自动化实战，但缺 AI/agent 项目；用学习中的后端Agent资料补足，转岗是机会', match: 62, gateway:'中' },
+      { role:'投行承做 (IBD) / ECM', why:'示例：投行项目财务核查、历史财务信息核验、管理层访谈/穿行/现场等可迁移程序；但相关项目实际投入有限，只能说 supported/assisted，深度是主要短板', match: 66, gateway:'中高' }
     ]},
     { label:'谨慎 / 排除', items:[
-      { role:'投行承做 (IBD)', why:'估值与财务功底是加分，但 IBD 对学历背景、实习、高强度 deal 经历要求高，现有经历偏审计', match: 58, gateway:'高' },
       { role:'审计 / 纯会计', why:'你明确不想做。你的经历虽通用于审计，但按目标应放下审计表述，转向分析/模型/风控口径', match: 20, gateway:'低(为你排除)' }
     ]}
-  ],
-  material: [
-    { id:'m1', dirs:['风控','减值'], title:'信贷风险识别与预警 · 140亿存量信贷全量审阅', phase:['PwC 2023-2026 · 银行业'],
-      bullets:[
-        { dir:'通用', desc:'执行全量信贷审阅（Credit Review），覆盖 80%+ 存量贷款（合计 140 亿元），搭建「财务指标 + 押品估值 + 负面舆情」三维评估体系，优化 IRB 内部评级模型与押品估值方法，提升 ECL 模型对 PD/LGD 的测算精度，推动拨备覆盖率提升 12pp' },
-        { dir:'Fintech 金融分析师', desc:'搭建覆盖偿债/盈利/营运/现金流的四维财务指标模型，建立客户信用风险评估矩阵并优化 PD/LGD 参数，预警 2 笔合计 2.4 亿元违约风险贷款（次年实际违约验证模型），将评级准确率提升至 95%+' },
-        { dir:'财务BP / 财务分析', desc:'全量审阅 140 亿元贷款组合，搭建立体化的减值监测框架，输出覆盖财务指标、押品、舆情的风险画像；优化五级分类交叉验证机制，显著提升资产质量前瞻性与披露准确性' },
-        { dir:'保险/互联网商业分析', desc:'用财务与舆情数据横向比较 80%+ 存量贷款主体的偿债能力，通过交叉验证（税务/司法/征信）识别高风险主体，量化信用风险敞口与预警信号' }
-      ],
-      kw:['Credit Review','IRB','PD','LGD','ECL','IFRS9','五级分类','风险矩阵','供应链金融/金融科技风控'],
-      metrics:['140亿元','80%+','2.4亿元','95%+','+12pp'], source:'简历素材.docx' },
-    { id:'m2', dirs:['估值'], title:'股权投资估值核验 · DCF/可比公司/OPM/B-S/DLOM', phase:['PwC 2023-2026 · TMT/股权投资'],
-      bullets:[
-        { dir:'通用', desc:'独立完成 20+ 项 FVTPL/FVOCI 口径非上市股权投资估值核验，运用收益法（FCFF 测算 + WACC 校验）、可比公司法（EV/EBITDA、EV/Sales、P/E 乘数）与 Backsolve 回溯法完成公允价值确认；采用 Black-Scholes 执行 OPM 股权价值分配，测算非上市股权流动性折扣（DLOM）' },
-        { dir:'PE/VC 投资分析', desc:'对 20+ 项横跨早期至多轮优先股、含清算赎回特殊条款的投资标的做公允价值测算，用 DCF/可比公司/Backsolve 三法交叉验证；OPM+B-S 拆分多轮优先股价值，评估核心参数合理性，为投后估值提供依据' },
-        { dir:'投行承做 / 估值', desc:'完成企业自由现金流（FCFF）预测与加权平均资本成本（WACC）推算，以可比公司法复核估值，运用 Black-Scholes/OPM 处理优先股与限售股，输出可审计的估值底稿' }
-      ],
-      kw:['DCF','FCFF','WACC','可比公司法','EV/EBITDA','OPM','Black-Scholes','DLOM','Backsolve','公允价值'],
-      metrics:['20+项','多轮优先股','三法交叉','DLOM'], source:'简历素材.docx' },
-    { id:'m3', dirs:['估值','数据'], title:'私募基金估值体系 & CAPM 非标债权定价', phase:['PwC 2023-2026 · 资管'],
-      bullets:[
-        { dir:'通用', desc:'主导 20 余只子基金、50+ 直投项目的估值与业绩评价体系建设，搭建标准化估值框架与作业流程；以市场乘数法计量直投公允价值，结合 Black-Scholes 与算术亚洲期权（AAP）测算限售/流动性折价；基于 CAPM 搭建非标固收债权估值框架，用 Python 自动化 ETL，估值效率提升 40%' },
-        { dir:'PE/VC 投资分析', desc:'建立覆盖 20 余只基金的统一估值 SOP，用 IRR/DPI 构建基金业绩评价模型；盘活跨项目定性判断，将估值成果快速转化为投资委员会决策输入' },
-        { dir:'财务BP / 数据分析', desc:'用 Python 自动化抓取债券评级/利率/财务比率并整合为估值基准库，搭建 CAPM 估值框架，整体作业提效 40%，量化支撑投资决策' }
-      ],
-      kw:['PE/VC 估值','SOP','IRR','DPI','算术亚洲期权','CAPM','ETL','Python'],
-      metrics:['20余只基金','50+项目','+40%'], source:'简历素材.docx' },
-    { id:'m4', dirs:['内控'], title:'SOX/C-SOX 内控体系 · 穿行/控制测试 · 风险矩阵', phase:['PwC 2023-2026 · 金融/制造'],
-      bullets:[
-        { dir:'通用', desc:'精通 SOX 与 C-SOX 合规要求，主导银行、券商、制造业等 6 大内控循环的全流程风险识别、穿行测试与控制测试；构建风险评估矩阵识别 30+ 关键控制点，牵头发现并推动一项重大控制缺陷整改落地；搭建制造业生产-成本-存货全流程内控体系，使生产成本差异核算精度提升至日度级别' },
-        { dir:'财务BP / 内控岗', desc:'面向审计与管理层，把「6 大内控循环」翻译成可落地的风险控制矩阵，设计穿行测试与关键控制测试方案；推动重大缺陷的系统化整改，保证财报合规与运营效率' },
-        { dir:'互联网商业分析（数据向）', desc:'梳理 120+ 业务节点流程，定位控制冗余与风险盲区，用数据驱动的方式量化关键风险控制点，将控制测试转化为可监控的指标，协助企业流程数字化' }
-      ],
-      kw:['SOX','C-SOX','穿行测试','控制测试','风险评估矩阵','ISA540','内控循环'],
-      metrics:['6大循环','120+节点','30+控制点','日度精度'], source:'简历素材.docx' },
-    { id:'m5', dirs:['数据'], title:'经营与财务数据分析 · SQL/Python/Power BI 自动化', phase:['PwC 2023-2026 · 券商/银行/港口'],
-      bullets:[
-        { dir:'通用', desc:'用 SQL 批量处理 10 万+ 条财务凭证与科目明细，设计五类高风险分录筛选规则，识别 150+ 条异常交易并在 56 家合并主体间做完整性测试；用 Python 抓取债券评级/利率/财务比率搭建估值基准库；以 VBA+SQL 开发工具处理千笔公司间交易抵消，审计审查效率提升 50%；构建银行利差分析模型（NIM/NIS）、港口收入拆解模型，用 SPSS/Stata 建模定位核心驱动因子' },
-        { dir:'互联网商业分析', desc:'以 SQL 完成大样本财务数据的风险筛选与指标计算，用 Python 实现抓取-清洗-建模自动化，把复杂审计逻辑转化为可复用的数据管线；输出管理层看板与决策建议' },
-        { dir:'产品经理(金融)', desc:'基于业务数据拆解收入/风险核心驱动因子，把「财务建模语言」转成「业务洞察」，为产品策略与风控规则提供数据支撑' }
-      ],
-      kw:['SQL','Python','Power BI','SPSS','Stata','ETL','NIM','NIS','完整性测试','自动化'],
-      metrics:['10万+凭证','150+异常','56家主体','50%','40%'], source:'简历素材.docx' },
-    { id:'m6', dirs:['准则','数据'], title:'合并报表 · IFRS/US GAAP · 收入准则', phase:['PwC 2023-2026 · 多行业'],
-      bullets:[
-        { dir:'通用', desc:'负责多集团合并报表编制，完成 200+ 笔关联方交易抵消；复核外币折算流程，保障 IFRS 与 US GAAP 双准则合规披露；精通新收入准则「五步法」与时点/时段确认，为港口、券商、制造多行业输出准则落地方案与会计处理优化（如券商积分合同负债、盐田港装卸时段确认）' },
-        { dir:'财务BP / 财务分析', desc:'把 IFRS/US GAAP 双准则要求落地为可执行披露流程，主导集团间抵消与外币折算；对新收入准则应用做合规再造，量化收入确认口径调整对报表的影响' }
-      ],
-      kw:['合并报表','IFRS','US GAAP','新收入准则','五步法','外币折算','合同负债'],
-      metrics:['200+笔','双准则','3000万+积分影响'], source:'简历素材.docx' },
-    { id:'m7', dirs:['AI','数据'], title:'AI · 数字化（经历较少，诚实定位）', phase:['自学 · 后端/Agent 开发资料'],
-      bullets:[
-        { dir:'通用', desc:'有 SQL/Python 扎实基础与多个真实自动化项目（凭证筛查、估值 ETL、VBA+SQL 抵消工具）；正系统学习后端与 Agent 开发（Python 基础、Agent 概念、数据库、网络等），渴望把财务/数据能力迁移到 AI 应用' },
-        { dir:'互联网商业分析', desc:'深耕真实业务数据自动化的同时，探索用大模型/Agent 重构财务与风控分析流程——以「能落地的数据分析+正在学习的 AI」为差异化' },
-        { dir:'数据/产品(金融)', desc:'强调自动化提效的实际成果，清晰表达「从财务数据到 AI 应用」的迁移路径与学习投入，诚实展示成长曲线而非夸大' }
-      ],
-      kw:['Python','SQL','自动化','Agent','后端','学习'],
-      metrics:['迁移期','多自动化项目'], source:'诚实标注 · 后端agent开发资料' }
   ]
 };
 
@@ -376,7 +319,7 @@ function openExpEditor(id){
         <div class="modal-head"><h3>${x?'编辑经历':'添加经历'}</h3><button class="btn btn-ghost" onclick="closeExpModal()">✕</button></div>
         <div class="modal-body">
           <label>标题<input id="ex-title" value="${esc(x?x.title:'')}" /></label>
-          <label>阶段 / 来源<input id="ex-phase" value="${esc(x?x.phase:'')}" placeholder="如 PwC 2023-2026 · 银行业" /></label>
+          <label>阶段 / 来源<input id="ex-phase" value="${esc(x?x.phase:'')}" placeholder="如 示例公司 2023-2026 · 财务分析" /></label>
           <label>方向标签（逗号分隔）<input id="ex-dirs" value="${esc((x?x.dirs:['通用']).join(', '))}" /></label>
           <label>方向写法（每个方向一段，格式：方向 | 描述）
             <textarea id="ex-bullets" rows="8">${esc((x?x.bullets:[]).map(b=>b.dir+' | '+b.desc).join('\n'))}</textarea>
@@ -713,139 +656,139 @@ function viewKb(id){
 }
 async function delKb(id){ if(!confirm('删除该知识点？'))return; await API.store.del('knowledge', id); state.resources.knowledge=state.resources.knowledge.filter(x=>x.id!==id); renderKnowledge(); toast('已删除','ok'); }
 /* ############### 模块3：机会库 + 基础简历 + Cover Letter + 简历库 ############### */
-const DEFAULT_ZH = `纪子悦
-现居香港 · +86 13635260153 · sophiaji2001@gmail.com
-linkedin.com/in/子悦-纪-51112b373/
+const DEFAULT_ZH = `张三
+现居城市 · +86 13800000000 · zhangsan@example.com
+linkedin.com/in/zhangsan/
 
 教育经历
-香港大学(HKU) 硕士 计算机科学(E-Commerce and Internet Computing)   2026.09-2027.11
-主要课程：电子商务技术、数字化转型、知识图谱、商业与电商机器学习、计算智能与机器学习
-香港浸会大学(HKBU) 会计学 本科（一等荣誉学位）   2019.09-2023.06
-GPA 3.62/4.00｜全校二等奖学金｜学生实习实践奖学金；十一届电子商务"三创"挑战赛 广东省二等奖
+示例大学 硕士 信息管理与信息系统   2020.09-2022.06
+主要课程：数据库原理、数据分析基础、信息系统设计、商业统计、机器学习导论
+示例财经大学 会计学 本科   2016.09-2020.06
+GPA 3.50/4.00｜校级二等奖学金；校级商业案例分析大赛 三等奖
 
 工作经历
-普华永道中天会计师事务所 高级审计员  2023.10-2026.09
-深耕金融、TMT、制造业，核心覆盖风控体系、估值建模、经营分析、会计处理，熟练运用 Python、SQL、Power BI 自动化与提效
-• 金融资产估值：DCF(FCFF/WACC)、可比公司法、Backsolve 完成公允价值验证，20+ 项非上市股权投资；Black-Scholes 执行 OPM 股权价值分配、测算 DLOM；主导 20 余只私募基金估值体系（50+ 直投项目），效率+40%
-• 内控体系：精通 SOX/C-SOX，主导多行业全业务循环风险识别、穿行测试与控制测试；搭建制造业生产-成本-存货全流程内控体系，成本差异核算精度提升至日度
-• 金融资产减值：主导 140 亿存量信贷全量审阅，预警 2 笔合计 2.4 亿违约风险贷款，五级分类交叉验证，评级准确率 95%+；搭建 IFRS9 分类矩阵与多场景 DCF 减值模型，优化 IRB 内部评级(PD/LGD)，拨备覆盖率 +12pp
-• 数据分析：用 SQL 处理 10 万+ 财务凭证、五类高风险筛选规则，识别 150+ 异常交易（覆盖 56 家合并主体）；Python 抓取债券评级/利率建估值基准库(+40%)；Stata 多元回归建模识别收入核心驱动因子
-• 合并报表与准则：负责多集团合并报表编制，开发 VBA+SQL 自动化工具，批量处理千笔公司间交易抵消，效率提升 50%，支持 IFRS/US GAAP 双准则合规披露；带队出具 10+ 份集团审计报告，覆盖 7 家子公司，识别多项会计处理与内控管理缺陷
-• 精通新收入准则、金融工具准则，为 TMT、金融、制造等多行业输出准则落地方案与会计处理优化建议
+示例科技有限公司 财务分析师  2022.07-2026.09
+参与财务分析与报表相关工作，覆盖月度结账、预算差异分析、合并报表与流程优化，日常使用 Excel、SQL、Python 完成数据处理
+• 参与月度结账与预算差异分析，输出经营分析月报，并跟进差异原因的落实
+• 协助编制集团合并报表，完成内部往来对账与抵消分录整理
+• 用 SQL 核对业务台账与财务账，定位并跟进差异，维护差异台账
+• 参与内部控制流程梳理与抽样测试，整理测试底稿与整改跟踪表
+• 用 Python 脚本自动化重复性数据整理，减少手工处理时间
+• 参与财务系统上线支持，整理需求说明并完成数据校验
 
 项目经历
-智能财务分析 Agent · 独立开发    2026
-用 DeepSeek LLM + Function Calling 搭建智能财务分析 Agent：FastAPI 服务 + Docker + GitHub Actions CI（pytest）；Agent 自动组合「SQL 查询 → 财务模型计算 → 会计准则 RAG 检索 → 子进程脚本」工具链，含只读 SQL / 超时安全约束与结构化 tool_trace 可观测日志，输出带依据的结构化分析报告
-求职工作台 & 课程笔记 Agent Skill · 用 Claude Code 开发    2026
-用 Claude Code 从 0 开发个人求职工作台（Node/Express 后端 + 单页前端），集成 DeepSeek LLM API 完成 JD 分析、经历润色、面试题生成，解析 1500+ 岗位 Excel 并支持 PDF 导出；开发「课程笔记整理」Agent Skill，将港硕课件 PDF 分节生成中英双语课时页、逐行讲解算法、自动判分练习题（内嵌 Pyodide 可运行代码工作区），覆盖 3 门课程
+示例 Python 数据处理脚本 · 个人练习    2026
+用 Python 编写数据处理脚本，完成表格读取、字段清洗与汇总，输出标准化结果表，并整理为可复用的脚本模板
+示例可视化看板 · 课程作业    2025
+基于公开示例数据搭建可视化看板，展示关键指标的趋势与构成，并输出简要结论
 
 实习经历
-普华永道中天会计师事务所 审计实习生  2022.01-2022.03
-港股上市银行年度审计：负责 8+ 个科目审计（拆分明细、审计调整、变动分析、披露、测算/抽凭）；制作函证控制表，负责所有函证 200+
-华兴会计师事务所 审计实习生  2021.06-2021.09
-建筑工程公司净资产专项审计：参与六大往来款底稿，编制重分类调整分录，账龄复核，内部往来逐笔核对，制发往来款函证与抽凭；完成团队近 30% 基础性工作，获一致好评
-中国平安保险(集团) 客户经理助理  2020.07-2020.09
-入职培训考试 96 分（前 5%），带领 8 人团队获全班第一、"优秀团队"证书；协助讲师每日 3 例案例分析及 1-2 件产品介绍；任讲师助理，帮助近百位新人岗前培训，80%+ 通过结训考试
+示例会计师事务所 审计实习生  2021.01-2021.03
+参与年度审计项目：完成科目明细核对、抽凭与变动分析，整理审计底稿并归档
+示例咨询有限公司 财务实习生  2020.06-2020.09
+参与专项审计项目：整理往来款底稿，完成账龄整理与往来余额核对
+示例贸易有限公司 财务助理实习生  2019.07-2019.09
+协助整理日常凭证与费用报销单据，完成台账登记与资料归档
 
 技能与证书
-证书：微软 MOS Excel 专家级、微软 MTA Python 国际、英语 CET-6、CET-4
-语言：英语(IELTS 7.5，本硕全英教学)、粤语(流利)、普通话(母语)
-技能：Office、SQL、Python、Power BI`;
+证书：英语 CET-6、CET-4、计算机等级证书二级
+语言：英语、普通话
+技能：Excel、SQL、Python、Power BI`;
 
-const DEFAULT_EN = `JI Ziyue (Sophia)
-Hong Kong · +86 13635260153 · sophiaji2001@gmail.com
-linkedin.com/in/子悦-纪-51112b373/
+const DEFAULT_EN = `Zhang San (Alex)
+Shanghai, China · +86 13800000000 · zhangsan@example.com
+linkedin.com/in/zhangsan/
 
 EDUCATION
-The University of Hong Kong (HKU)     Hong Kong
-MSc, Computer Science (E-Commerce and Internet Computing)     Sep 2026 - Nov 2027
-Relevant coursework: E-Commerce Technology, Digital Transformation, Knowledge Graphs, Machine Learning for Business & E-Commerce, Computational Intelligence & Machine Learning
+Example University     Shanghai
+MSc, Information Management     Sep 2020 - Jun 2022
+Relevant coursework: Database Systems, Business Statistics, Data Analysis Fundamentals, Information Systems Design, Introduction to Machine Learning
 
-Beijing Normal - Hong Kong Baptist University (HKBU)     Zhuhai
-BBA (Honours) in Accounting, First-Class Honours     Sep 2019 - Jun 2023
-GPA 3.62/4.00 | University Second-Class Scholarship | Student Internship/Practice Scholarship
-2nd Prize, Guangdong Provincial E-commerce "Innovation, Creativity & Entrepreneurship" Challenge
+Example College of Finance and Economics     Hangzhou
+BBA (Honours) in Accounting     Sep 2016 - Jun 2020
+GPA 3.50/4.00 | College Second-Class Scholarship
+Third Prize, College Business Case Competition
 
 WORK EXPERIENCE
-PricewaterhouseCoopers (PwC) Zhong Tian LLP     Senior Auditor     Oct 2023 - Sep 2026
-Deep experience across finance, TMT and manufacturing: risk control systems, valuation modelling, operational & financial analysis and accounting; automated workflows using Python, SQL and Power BI.
-- Financial asset valuation: Verified fair value via DCF (FCFF/WACC), comparable companies and Backsolve for 20+ unlisted equity investments; used Black-Scholes to allocate value via OPM and measure DLOM; led a valuation framework for 20+ PE funds (50+ direct projects, +40% efficiency)
-- Internal controls: SOX / C-SOX; risk identification, walkthrough & control testing across full business cycles; built a production-cost-inventory control framework (daily cost-variance granularity)
-- Financial asset impairment: Reviewed RMB 14bn of loans and flagged two high-risk loans totaling RMB 240m; 5-tier classification cross-check with 95%+ rating accuracy; IFRS9 classification matrix + multi-scenario DCF impairment; optimized IRB (PD/LGD), lifting the provision coverage ratio by 12pp
-- Data & analytics: Processed 100k+ journal entries via SQL with 5 high-risk filters (150+ anomalies across 56 entities); automated bond/rate data ingestion in Python (+40%); Stata regression to identify revenue drivers
-- Consolidation & standards: Led consolidated financial statement preparation for multiple groups; developed VBA+SQL automation tools to offset 1,000+ intercompany transactions (+50% efficiency) under IFRS/US GAAP; led the issuance of 10+ group audit reports covering 7 subsidiaries, identifying multiple accounting and internal-control deficiencies
-- Proficient in new revenue-recognition and financial-instruments standards; delivered implementation and accounting-treatment solutions for TMT, finance and manufacturing clients
+Example Technology Co., Ltd.     Financial Analyst     Jul 2022 - Sep 2026
+Finance and reporting support across monthly close, budget variance analysis, consolidation and process improvement; day-to-day data handling with Excel, SQL and Python.
+- Monthly close & analysis: supported monthly closing and budget variance analysis, produced the monthly business review pack and followed up on variance explanations
+- Consolidation: assisted with group consolidated statements, intercompany reconciliation and elimination entries
+- Data checks: used SQL to reconcile business ledgers against the financial ledger, logged differences and tracked them to closure
+- Internal controls: supported process walkthroughs and sample testing, prepared testing workpapers and remediation trackers
+- Automation: wrote Python scripts to automate repetitive data preparation and reduce manual handling time
+- System support: supported a finance-system rollout, drafted requirement notes and completed data validation
 
 PROJECTS
-Intelligent Financial Analysis Agent · Independent Project    2026
-Built an LLM-powered financial analysis agent with DeepSeek + Function Calling on a FastAPI backend with Docker and GitHub Actions CI (pytest); the agent chains read-only SQL (SQLite), standard financial models (margin/liquidity/leverage/ROE/ROA/turnover/WACC/DCF/IRR/ECL), RAG retrieval of accounting standards (TF-IDF) and a sandboxed subprocess calculator, with read-only SQL, timeouts and structured tool_trace observability, producing evidence-backed analysis reports
-Job Application Workbench & Course-Notes Agent Skill · Built with Claude Code    2026
-Built a personal job-application workbench from scratch with Claude Code (Node/Express backend + single-page frontend), integrating the DeepSeek LLM API for JD analysis, experience polishing and interview-question generation, parsing a 1,500+ job Excel sheet with PDF export; also built a "course-notes" Agent Skill that splits HKU lecture PDFs into bilingual lesson pages, explains algorithms line by line and auto-generates graded exercises (single-choice, multiple-choice, fill-in-the-blank) with an in-browser runnable code workspace (Pyodide), covering 3 courses
+Sample Python Data-Processing Script · Personal Practice    2026
+Wrote a Python script that reads spreadsheets, cleans fields and produces standardised summary tables, packaged as a reusable script template
+Sample Visualisation Dashboard · Course Project    2025
+Built a dashboard on sample open data showing the trend and composition of key metrics, with a short written summary of findings
 
 INTERNSHIP EXPERIENCE
-PwC Zhong Tian LLP     Audit Intern     Jan 2022 - Mar 2022
-Listed HK bank annual audit: owned 8+ subjects (breakdown, audit adjustments, variance analysis, disclosure, testing & sampling); built the confirmation control sheet and managed 200+ confirmations
-Huaxing CPA     Audit Intern     Jun 2021 - Sep 2021
-Net-asset special audit for a construction firm: 6 intercompany working papers, reclassification entries, ageing analysis, reconciling internal transactions, confirmations & sampling; about 30% of the team's foundational work
-Ping An Insurance (Group)     Client Manager Assistant     Jul 2020 - Sep 2020
-Scored 96/100 (top 5%) in the onboarding exam; led an 8-person team to #1 ("Outstanding Team"); supported daily case analysis & product intros; trained ~100 new hires (80%+ passed)
+Example CPA Firm     Audit Intern     Jan 2021 - Mar 2021
+Supported an annual audit: account breakdown checks, voucher sampling and variance analysis, and prepared audit workpapers for filing
+Example Consulting Co., Ltd.     Finance Intern     Jun 2020 - Sep 2020
+Supported a special audit: prepared working papers for intercompany balances, ageing schedules and balance reconciliation
+Example Trading Co., Ltd.     Finance Assistant Intern     Jul 2019 - Sep 2019
+Assisted with day-to-day vouchers and expense claims, and maintained ledgers and filing records
 
 SKILLS & CERTIFICATIONS
-Certifications: Microsoft MOS Excel Expert, MTA Python International, CET-6, CET-4
-Languages: English (IELTS 7.5, full English instruction), Cantonese (fluent), Mandarin (native)
-Tools: Office, SQL, Python, Power BI`;
+Certifications: CET-6, CET-4, National Computer Rank Examination Level 2
+Languages: English, Mandarin
+Tools: Excel, SQL, Python, Power BI`;
 
-const DEFAULT_TW = `紀子悅
-現居香港 · +86 13635260153 · sophiaji2001@gmail.com
-linkedin.com/in/子悅-紀-51112b373/
+const DEFAULT_TW = `張三
+現居城市 · +86 13800000000 · zhangsan@example.com
+linkedin.com/in/zhangsan/
 
 教育經歷
-香港大學（HKU） 碩士 計算機科學（E-Commerce and Internet Computing）   2026.09-2027.11
-主要課程：電子商務技術、數碼轉型、知識圖譜、商業與電商機器學習、計算智能與機器學習
-香港浸會大學（HKBU） 會計學 本科（一級榮譽學位）   2019.09-2023.06
-GPA 3.62/4.00｜全校二等獎學金｜學生實習實踐獎學金；十一屆大學生電子商務「三創」挑戰賽 廣東省二等獎
+示例大學 碩士 資訊管理與資訊系統   2020.09-2022.06
+主要課程：資料庫原理、數據分析基礎、資訊系統設計、商業統計、機器學習導論
+示例財經大學 會計學 本科   2016.09-2020.06
+GPA 3.50/4.00｜校級二等獎學金；校級商業案例分析大賽 三等獎
 
 工作經歷
-普華永道中天會計師事務所 高級審計員  2023.10-2026.09
-深耕金融、TMT、製造業，核心覆蓋風控體系、估值建模、經營分析、會計處理，熟練運用 Python、SQL、Power BI 自動化與提效
-• 金融資產估值：以 DCF（FCFF/WACC）、可比公司法、Backsolve 完成公允價值驗證，20+ 項非上市股權投資；Black-Scholes 執行 OPM 股權價值分配、測算 DLOM；主導 20 餘隻私募基金估值體系（50+ 直接投資項目），效率 +40%
-• 內控體系：精通 SOX/C-SOX，主導多行業全業務循環風險識別、穿行測試與控制測試；搭建製造業生產-成本-存貨全流程內控體系，成本差異核算精度提升至日度
-• 金融資產減值：主導 140 億存量信貸全量審閱，預警 2 筆合計 2.4 億違約風險貸款，五級分類交叉驗證，評級準確率 95%+；搭建 IFRS9 分類矩陣與多情景 DCF 減值模型，優化 IRB 內部評級（PD/LGD），撥備覆蓋率 +12pp
-• 數據分析：以 SQL 處理 10 萬+ 財務憑證、五類高風險篩選規則，識別 150+ 異常交易（覆蓋 56 家合併主體）；Python 抓取債券評級/利率建估值基準庫（+40%）；Stata 多元回歸建模識別收入核心驅動因素
-• 合併報表與準則：負責多集團合併報表編製，開發 VBA+SQL 自動化工具，批量處理千筆公司間交易抵消，效率提升 50%，支持 IFRS/US GAAP 雙準則合規披露；帶隊出具 10+ 份集團審計報告，覆蓋 7 家子公司，識別多項會計處理與內控管理缺陷
-• 精通新收入準則、金融工具準則，為 TMT、金融、製造等多行業輸出準則落地方案與會計處理優化建議
+示例科技有限公司 財務分析師  2022.07-2026.09
+參與財務分析與報表相關工作，涵蓋月度結帳、預算差異分析、合併報表與流程優化，日常使用 Excel、SQL、Python 完成數據處理
+• 參與月度結帳與預算差異分析，輸出經營分析月報，並跟進差異原因的落實
+• 協助編製集團合併報表，完成內部往來對帳與抵消分錄整理
+• 以 SQL 核對業務台帳與財務帳，定位並跟進差異，維護差異台帳
+• 參與內部控制流程梳理與抽樣測試，整理測試底稿與整改跟蹤表
+• 以 Python 腳本自動化重複性數據整理，減少手工處理時間
+• 參與財務系統上線支援，整理需求說明並完成數據校驗
 
 項目經歷
-智能財務分析 Agent · 獨立開發    2026
-以 DeepSeek LLM + Function Calling 搭建智能財務分析 Agent：FastAPI 服務 + Docker + GitHub Actions CI（pytest）；Agent 自動組合「SQL 查詢 → 財務模型計算 → 會計準則 RAG 檢索 → 子進程腳本」工具鏈，含只讀 SQL / 逾時安全約束與結構化 tool_trace 可觀測日誌，輸出附依據的結構化分析報告
-求職工作台 & 課程筆記 Agent Skill · 以 Claude Code 開發    2026
-以 Claude Code 從零開發個人求職工作台（Node/Express 後端 + 單頁前端），整合 DeepSeek LLM API 完成 JD 分析、經歷潤色、面試題生成，解析 1500+ 崗位 Excel 並支持 PDF 導出；開發「課程筆記整理」Agent Skill，將港碩課件 PDF 分節生成中英雙語課時頁、逐行講解算法、自動判分練習題（內嵌 Pyodide 可運行代碼工作區），覆蓋 3 門課程
+示例 Python 數據處理腳本 · 個人練習    2026
+以 Python 編寫數據處理腳本，完成表格讀取、欄位清洗與彙總，輸出標準化結果表，並整理為可複用的腳本模板
+示例可視化看板 · 課程作業    2025
+基於公開示例數據搭建可視化看板，展示關鍵指標的趨勢與構成，並輸出簡要結論
 
 實習經歷
-普華永道中天會計師事務所 審計實習生  2022.01-2022.03
-港股上市銀行年度審計：負責 8+ 個科目審計（拆分明細、審計調整、變動分析、披露、測算/抽憑）；製作函證控制表，負責所有函證 200+
-華興會計師事務所 審計實習生  2021.06-2021.09
-建築工程公司淨資產專項審計：參與六大往來款底稿，編製重分類調整分錄，帳齡覆核，內部往來逐筆核對，製發往來款函證與抽憑；完成團隊近 30% 基礎性工作，獲一致好評
-中國平安保險（集團） 客戶經理助理  2020.07-2020.09
-入職培訓考試 96 分（前 5%），帶領 8 人團隊獲全班第一、「優秀團隊」證書；協助講師每日 3 例案例分析及 1-2 件產品介紹；任講師助理，幫助近百位新人崗前培訓，80%+ 通過結訓考試
+示例會計師事務所 審計實習生  2021.01-2021.03
+參與年度審計項目：完成科目明細核對、抽憑與變動分析，整理審計底稿並歸檔
+示例諮詢有限公司 財務實習生  2020.06-2020.09
+參與專項審計項目：整理往來款底稿，完成帳齡整理與往來餘額核對
+示例貿易有限公司 財務助理實習生  2019.07-2019.09
+協助整理日常憑證與費用報銷單據，完成台帳登記與資料歸檔
 
 技能與證書
-證書：微軟 MOS Excel 專家級、微軟 MTA Python 國際、英語 CET-6、CET-4
-語言：英語（IELTS 7.5，本碩全英教學）、粵語（流利）、普通話（母語）
-技能：Office、SQL、Python、Power BI`;
+證書：英語 CET-6、CET-4、計算機等級證書二級
+語言：英語、普通話
+技能：Excel、SQL、Python、Power BI`;
 
 const DEFAULT_COVER = `Subject: Application for [Job Title] at [Company]
 
 Dear Hiring Manager,
 
-I am writing to apply for the [Job Title] role at [Company]. With a strong foundation in finance, risk, and data analytics gained over three years at PwC, and my current MSc in Electronic Commerce & Internet Computing at HKU, I bring a rare blend of financial depth and technical capability to support [specific goal].
+I am writing to apply for the [Job Title] role at [Company]. With a strong foundation in financial analysis and reporting gained across several years of professional experience, plus practical data skills in Excel, SQL and Python, I bring a blend of financial understanding and hands-on automation to support [specific goal].
 
-At PwC, I led credit-risk reviews across RMB 14bn of loans (refining IRB/ECL models and lifting rating accuracy to 95%+), verified 20+ private-equity valuations (DCF, comparable companies, OPM, Black-Scholes), and automated large-scale analysis with SQL and Python - improving efficiency by 40-50%.
+In my previous role, I supported monthly closing and budget variance analysis, helped prepare group consolidated statements and intercompany reconciliations, and used SQL and Python to check large data sets and automate repetitive preparation work.
 
 I am especially drawn to [Company] because [specific reason]. I am eager to apply my analytical rigor and cross-functional collaboration to drive value for your team.
 
 Sincerely,
-JI Ziyue (Sophia)`;
+Zhang San`;
 
 function renderResume(){
   const sub = state.resumeSub || 'jobs';
@@ -1264,7 +1207,7 @@ function exportResume(kind){
 }
 
 /* ============================================================
-   📐 简历排版 —— 与「CV-Ji Ziyue 20260915 / CV-纪子悦 20260912」同版式
+   📐 简历排版 —— 与「内置简历版式」一致
    文档结构：{ kind, name, contacts:[string], photo:url,
               sections:[ { title, rows:[ { t:'pair'|'bullet'|'text', l, r, b } ] } ] }
    t='pair' 左标题+右日期；t='bullet' 方点要点；t='text' 整段文字；b=0 取消加粗
@@ -1319,127 +1262,127 @@ function injectCvCss(){
 
 /* ---------- 内置版式模板（按 PDF 原文逐行还原） ---------- */
 const CV_TPL_ZH = {
-  kind:'zh', name:'纪子悦', photo:'/uploads/cv_photo.jpg',
-  contacts:['电话： 13635260153 | 邮箱： sophiaji2001@gmail.com','领英： www.linkedin.com/in/ziyueji0806'],
+  kind:'zh', name:'张三', photo:'',
+  contacts:['电话： 13800000000 | 邮箱： zhangsan@example.com','领英： www.linkedin.com/in/zhangsan'],
   sections:[
     { title:'教育经历', rows:[
-      { t:'pair', l:'香港大学 (HKU)-计算机科学(E-Commerce and Internet Computing) 硕士 全日制', r:'2026年09月 - 2027年11月' },
-      { t:'bullet', l:'主要课程：电子商务技术、数字化转型、知识图谱、商业与电商机器学习、计算智能与机器学习' },
-      { t:'pair', l:'香港浸会大学 (HKBU)-会计学 (一等荣誉学位) 本科 全日制', r:'2019年09月 - 2023年06月' },
-      { t:'text', l:'GPA：3.62/4.00｜全校二等奖学金｜学生实习实践奖学金 | 十一届大学生电子商务“创新、创意及创业”挑战赛(广东省省赛二等奖)' }
+      { t:'pair', l:'示例大学-信息管理与信息系统 硕士 全日制', r:'2020年09月 - 2022年06月' },
+      { t:'bullet', l:'主要课程：数据库原理、数据分析基础、信息系统设计、商业统计、机器学习导论' },
+      { t:'pair', l:'示例财经大学-会计学 本科 全日制', r:'2016年09月 - 2020年06月' },
+      { t:'text', l:'GPA：3.50/4.00｜校级二等奖学金 | 校级商业案例分析大赛(三等奖)' }
     ]},
     { title:'工作经历', rows:[
-      { t:'pair', l:'普华永道中天会计师事务所-高级审计员', r:'2023年10月 - 2026年09月' },
-      { t:'text', l:'深耕金融、TMT及制造业领域，核心能力覆盖风险控制体系建设、估值建模、经营分析及复杂会计处理；熟练运用 Python、SQL、Power BI 等工具推动审计与财务分析流程自动化，提升项目执行效率。' },
-      { t:'bullet', l:'金融资产估值：运用 DCF（FCFF/WACC）、可比公司法、Backsolve 等方法完成 20+ 项非上市股权投资公允价值验证；基于 Black-Scholes 模型执行 OPM 股权价值分配及 DLOM 测算；主导 20+ 只私募基金估值体系复核，覆盖 50+ 个直投项目，整体效率提升 40%。' },
-      { t:'bullet', l:'内控体系：熟悉 SOX / C-SOX 内控要求，主导多行业全业务循环风险识别、穿行测试及控制测试；搭建制造业“生产—成本—存货”全流程内控体系，将成本差异核算精度提升至日度维度。' },
-      { t:'bullet', l:'金融资产减值：主导 140 亿元存量信贷资产全量审阅，识别并预警 2 笔合计 2.4 亿元违约风险贷款；通过五级分类交叉验证实现 95%+ 评级准确率；搭建 IFRS 9 分类矩阵及多场景 DCF 减值模型，优化 IRB 内部评级参数（PD / LGD），推动拨备覆盖率提升 12 个百分点。' },
-      { t:'bullet', l:'数据分析：基于 SQL 处理 10 万+ 条财务凭证，并设计五类高风险筛选规则，识别 150+ 笔异常交易，覆盖 56 家合并主体；通过 Python 抓取债券评级及利率数据，搭建估值基准数据库，效率提升 40%；运用 Stata 多元回归模型识别收入核心驱动因素。' },
-      { t:'bullet', l:'合并报表与会计准则：负责多个集团合并报表编制，开发 VBA + SQL 自动化工具，批量处理千笔级公司间交易抵消，效率提升 50%；支持 IFRS / US GAAP 双准则合规披露；带队出具 10+ 份集团审计报告，覆盖 7 家子公司，识别多项会计处理及内控管理缺陷；熟悉新收入准则及金融工具准则，为多行业客户提供准则落地及会计处理优化方案。' }
+      { t:'pair', l:'示例科技有限公司-财务分析师', r:'2022年07月 - 2026年09月' },
+      { t:'text', l:'参与财务分析与报表相关工作，覆盖月度结账、预算差异分析、合并报表及流程优化；熟练运用 Excel、SQL、Python 完成日常数据处理。' },
+      { t:'bullet', l:'月度结账与预算差异分析：参与月度结账及预算差异分析，输出经营分析月报，并跟进差异原因的落实。' },
+      { t:'bullet', l:'合并报表：协助编制集团合并报表，完成内部往来对账及抵消分录整理。' },
+      { t:'bullet', l:'数据核对：使用 SQL 核对业务台账与财务账，定位并跟进差异，维护差异台账。' },
+      { t:'bullet', l:'内部控制：参与内部控制流程梳理与抽样测试，整理测试底稿及整改跟踪表；搭建基础的费用审核检查清单。' },
+      { t:'bullet', l:'流程自动化：使用 Python 脚本自动化重复性数据整理，减少手工处理时间；参与财务系统上线支持，整理需求说明并完成数据校验。' }
     ]},
     { title:'项目经历', rows:[
-      { t:'pair', l:'求职工作台 & 课程笔记 Agent Skill', r:'2026年09月' },
-      { t:'bullet', l:'用 Claude Code 从 0 开发个人求职工作台（Node/Express 后端 + 单页前端），集成 DeepSeek LLM API 完成 JD 分析、经历润色、面试题生成，解析 1500+ 岗位 Excel 并支持 PDF 导出；' },
-      { t:'bullet', l:'开发「课程笔记整理」Agent Skill，将港硕课件 PDF 分节生成中英双语课时页、逐行讲解算法、自动判分练习题（内嵌 Pyodide 可运行代码工作区），覆盖 5 门课程' }
+      { t:'pair', l:'示例 Python 数据处理脚本 · 个人练习', r:'2026年09月' },
+      { t:'bullet', l:'使用 Python 编写数据处理脚本，完成表格读取、字段清洗与汇总，输出标准化结果表；' },
+      { t:'bullet', l:'将常用处理步骤整理为可复用的脚本模板，并补充简要使用说明' }
     ]},
     { title:'实习经历', rows:[
-      { t:'pair', l:'普华永道中天会计师事务所 | 审计实习生', r:'2022年01月 - 2022年03月' },
-      { t:'text', l:'港股上市银行年度审计：负责 8+ 个科目审计（拆分明细、审计调整、变动分析、披露、测算/抽凭）；制作函证控制表，负责所有函证 200+' },
-      { t:'pair', l:'华兴会计师事务所 | 审计实习生', r:'2021年06月 - 2021年09月' },
-      { t:'text', l:'建筑工程公司净资产专项审计：参与六大往来款底稿，编制重分类调整分录，账龄复核，内部往来逐笔核对，制发往来款函证与抽凭；完成团队近 30% 基础性工作，获一致好评' },
-      { t:'pair', l:'中国平安保险（集团）公司 | 客户经理助理', r:'2020年07月 - 2020年09月' },
-      { t:'text', l:'入职培训考试 96 分（前 5%），带领 8 人团队获全班第一、"优秀团队"证书；协助讲师每日 3 例案例分析及 1-2 件产品介绍；任讲师助理，帮助近百位新人岗前培训，80%+ 通过结训考试' }
+      { t:'pair', l:'示例会计师事务所 | 审计实习生', r:'2021年01月 - 2021年03月' },
+      { t:'text', l:'参与年度审计项目：完成科目明细核对、抽凭及变动分析，整理审计底稿并归档' },
+      { t:'pair', l:'示例咨询有限公司 | 财务实习生', r:'2020年06月 - 2020年09月' },
+      { t:'text', l:'参与专项审计项目：整理往来款底稿，完成账龄整理及往来余额核对' },
+      { t:'pair', l:'示例贸易有限公司 | 财务助理实习生', r:'2019年07月 - 2019年09月' },
+      { t:'text', l:'协助整理日常凭证与费用报销单据，完成台账登记及资料归档' }
     ]},
     { title:'技能证书', rows:[
-      { t:'bullet', l:'证书/执照： 微软MOS Excel专家级认证、微软MTA python国际认证、英语CET-6，CET-4' },
-      { t:'bullet', l:'语言： 英语（IELTS 7.5 & 本硕全英教学），粤语（流利），普通话（母语）' },
+      { t:'bullet', l:'证书/执照： 英语CET-6，CET-4，计算机等级证书二级' },
+      { t:'bullet', l:'语言： 英语，普通话' },
       { t:'bullet', l:'技能： 熟练使用Office软件、SQL、Python、PowerBI' }
     ]}
   ]
 };
 
 const CV_TPL_TW = {
-  kind:'tw', name:'紀子悅', photo:'/uploads/cv_photo.jpg',
-  contacts:['電話： 13635260153 | 郵箱： sophiaji2001@gmail.com','領英： www.linkedin.com/in/ziyueji0806'],
+  kind:'tw', name:'張三', photo:'',
+  contacts:['電話： 13800000000 | 郵箱： zhangsan@example.com','領英： www.linkedin.com/in/zhangsan'],
   sections:[
     { title:'教育經歷', rows:[
-      { t:'pair', l:'香港大學 (HKU)-計算機科學(E-Commerce and Internet Computing) 碩士 全日制', r:'2026年09月 - 2027年11月' },
-      { t:'bullet', l:'主要課程：電子商務技術、數碼轉型、知識圖譜、商業與電商機器學習、計算智能與機器學習' },
-      { t:'pair', l:'香港浸會大學 (HKBU)-會計學 (一級榮譽學位) 本科 全日制', r:'2019年09月 - 2023年06月' },
-      { t:'text', l:'GPA：3.62/4.00｜全校二等獎學金｜學生實習實踐獎學金 | 十一屆大學生電子商務「創新、創意及創業」挑戰賽(廣東省省賽二等獎)' }
+      { t:'pair', l:'示例大學-資訊管理與資訊系統 碩士 全日制', r:'2020年09月 - 2022年06月' },
+      { t:'bullet', l:'主要課程：資料庫原理、數據分析基礎、資訊系統設計、商業統計、機器學習導論' },
+      { t:'pair', l:'示例財經大學-會計學 本科 全日制', r:'2016年09月 - 2020年06月' },
+      { t:'text', l:'GPA：3.50/4.00｜校級二等獎學金 | 校級商業案例分析大賽(三等獎)' }
     ]},
     { title:'工作經歷', rows:[
-      { t:'pair', l:'普華永道中天會計師事務所-高級審計員', r:'2023年10月 - 2026年09月' },
-      { t:'text', l:'深耕金融、TMT及製造業領域，核心能力覆蓋風險控制體系建設、估值建模、經營分析及複雜會計處理；熟練運用 Python、SQL、Power BI 等工具推動審計與財務分析流程自動化，提升項目執行效率。' },
-      { t:'bullet', l:'金融資產估值：運用 DCF（FCFF/WACC）、可比公司法、Backsolve 等方法完成 20+ 項非上市股權投資公允價值驗證；基於 Black-Scholes 模型執行 OPM 股權價值分配及 DLOM 測算；主導 20+ 隻私募基金估值體系覆核，覆蓋 50+ 個直投項目，整體效率提升 40%。' },
-      { t:'bullet', l:'內控體系：熟悉 SOX / C-SOX 內控要求，主導多行業全業務循環風險識別、穿行測試及控制測試；搭建製造業「生產—成本—存貨」全流程內控體系，將成本差異核算精度提升至日度維度。' },
-      { t:'bullet', l:'金融資產減值：主導 140 億元存量信貸資產全量審閱，識別並預警 2 筆合計 2.4 億元違約風險貸款；通過五級分類交叉驗證實現 95%+ 評級準確率；搭建 IFRS 9 分類矩陣及多場景 DCF 減值模型，優化 IRB 內部評級參數（PD / LGD），推動撥備覆蓋率提升 12 個百分點。' },
-      { t:'bullet', l:'數據分析：基於 SQL 處理 10 萬+ 條財務憑證，並設計五類高風險篩選規則，識別 150+ 筆異常交易，覆蓋 56 家合併主體；通過 Python 抓取債券評級及利率數據，搭建估值基準數據庫，效率提升 40%；運用 Stata 多元回歸模型識別收入核心驅動因素。' },
-      { t:'bullet', l:'合併報表與會計準則：負責多個集團合併報表編製，開發 VBA + SQL 自動化工具，批量處理千筆級公司間交易抵消，效率提升 50%；支持 IFRS / US GAAP 雙準則合規披露；帶隊出具 10+ 份集團審計報告，覆蓋 7 家子公司，識別多項會計處理及內控管理缺陷；熟悉新收入準則及金融工具準則，為多行業客戶提供準則落地及會計處理優化方案。' }
+      { t:'pair', l:'示例科技有限公司-財務分析師', r:'2022年07月 - 2026年09月' },
+      { t:'text', l:'參與財務分析與報表相關工作，涵蓋月度結帳、預算差異分析、合併報表及流程優化；熟練運用 Excel、SQL、Python 完成日常數據處理。' },
+      { t:'bullet', l:'月度結帳與預算差異分析：參與月度結帳及預算差異分析，輸出經營分析月報，並跟進差異原因的落實。' },
+      { t:'bullet', l:'合併報表：協助編製集團合併報表，完成內部往來對帳及抵消分錄整理。' },
+      { t:'bullet', l:'數據核對：使用 SQL 核對業務台帳與財務帳，定位並跟進差異，維護差異台帳。' },
+      { t:'bullet', l:'內部控制：參與內部控制流程梳理與抽樣測試，整理測試底稿及整改跟蹤表；搭建基礎的費用審核檢查清單。' },
+      { t:'bullet', l:'流程自動化：使用 Python 腳本自動化重複性數據整理，減少手工處理時間；參與財務系統上線支援，整理需求說明並完成數據校驗。' }
     ]},
     { title:'項目經歷', rows:[
-      { t:'pair', l:'求職工作台 & 課程筆記 Agent Skill', r:'2026年09月' },
-      { t:'bullet', l:'用 Claude Code 從 0 開發個人求職工作台（Node/Express 後端 + 單頁前端），集成 DeepSeek LLM API 完成 JD 分析、經歷潤色、面試題生成，解析 1500+ 崗位 Excel 並支持 PDF 導出；' },
-      { t:'bullet', l:'開發「課程筆記整理」Agent Skill，將港碩課件 PDF 分節生成中英雙語課時頁、逐行講解算法、自動判分練習題（內嵌 Pyodide 可運行代碼工作區），覆蓋 5 門課程' }
+      { t:'pair', l:'示例 Python 數據處理腳本 · 個人練習', r:'2026年09月' },
+      { t:'bullet', l:'使用 Python 編寫數據處理腳本，完成表格讀取、欄位清洗與彙總，輸出標準化結果表；' },
+      { t:'bullet', l:'將常用處理步驟整理為可複用的腳本模板，並補充簡要使用說明' }
     ]},
     { title:'實習經歷', rows:[
-      { t:'pair', l:'普華永道中天會計師事務所 | 審計實習生', r:'2022年01月 - 2022年03月' },
-      { t:'text', l:'港股上市銀行年度審計：負責 8+ 個科目審計（拆分明細、審計調整、變動分析、披露、測算/抽憑）；製作函證控制表，負責所有函證 200+' },
-      { t:'pair', l:'華興會計師事務所 | 審計實習生', r:'2021年06月 - 2021年09月' },
-      { t:'text', l:'建築工程公司淨資產專項審計：參與六大往來款底稿，編製重分類調整分錄，帳齡覆核，內部往來逐筆核對，製發往來款函證與抽憑；完成團隊近 30% 基礎性工作，獲一致好評' },
-      { t:'pair', l:'中國平安保險（集團）公司 | 客戶經理助理', r:'2020年07月 - 2020年09月' },
-      { t:'text', l:'入職培訓考試 96 分（前 5%），帶領 8 人團隊獲全班第一、「優秀團隊」證書；協助講師每日 3 例案例分析及 1-2 件產品介紹；任講師助理，幫助近百位新人崗前培訓，80%+ 通過結訓考試' }
+      { t:'pair', l:'示例會計師事務所 | 審計實習生', r:'2021年01月 - 2021年03月' },
+      { t:'text', l:'參與年度審計項目：完成科目明細核對、抽憑及變動分析，整理審計底稿並歸檔' },
+      { t:'pair', l:'示例諮詢有限公司 | 財務實習生', r:'2020年06月 - 2020年09月' },
+      { t:'text', l:'參與專項審計項目：整理往來款底稿，完成帳齡整理及往來餘額核對' },
+      { t:'pair', l:'示例貿易有限公司 | 財務助理實習生', r:'2019年07月 - 2019年09月' },
+      { t:'text', l:'協助整理日常憑證與費用報銷單據，完成台帳登記及資料歸檔' }
     ]},
     { title:'技能證書', rows:[
-      { t:'bullet', l:'證書/執照： 微軟MOS Excel專家級認證、微軟MTA python國際認證、英語CET-6，CET-4' },
-      { t:'bullet', l:'語言： 英語（IELTS 7.5 & 本碩全英教學），粵語（流利），普通話（母語）' },
+      { t:'bullet', l:'證書/執照： 英語CET-6，CET-4，計算機等級證書二級' },
+      { t:'bullet', l:'語言： 英語，普通話' },
       { t:'bullet', l:'技能： 熟練使用Office軟件、SQL、Python、PowerBI' }
     ]}
   ]
 };
 
 const CV_TPL_EN = {
-  kind:'en', name:'JI Ziyue (Sophia)', photo:'',
-  contacts:['+852 51451636 | sophiaji2001@gmail.com','www.linkedin.com/in/ziyueji0806'],
+  kind:'en', name:'Zhang San (Alex)', photo:'',
+  contacts:['+86 13800000000 | zhangsan@example.com','www.linkedin.com/in/zhangsan'],
   sections:[
     { title:'EDUCATION', rows:[
-      { t:'pair', l:'The University of Hong Kong (HKU)', r:'Sep 2026 - Nov 2027' },
-      { t:'pair', l:'MSc in E-Commerce and Internet Computing | Full-time', r:'Hongkong', b:0 },
-      { t:'bullet', l:'Relevant coursework: E-commerce Technology, Knowledge Graphs, Machine Learning for Business & E-Commerce, Computational Intelligence & Machine Learning' },
-      { t:'pair', l:'Hong Kong Baptist University (HKBU)', r:'Sep 2019 - Jun 2023' },
-      { t:'pair', l:'BBA in Accounting(First Class Honours) | Full-time', r:'Zhuhai', b:0 },
-      { t:'text', l:'GPA:3.62/4.00 | School Second Class Scholarship | Student Internship Practice Scholarship | The 11th National College Students\' E-commerce "Innovation, Creativity and Entrepreneurship" Challenge (2nd Prize, Guangdong Provincial Round)' }
+      { t:'pair', l:'Example University', r:'Sep 2020 - Jun 2022' },
+      { t:'pair', l:'MSc in Information Management | Full-time', r:'Shanghai', b:0 },
+      { t:'bullet', l:'Relevant coursework: Database Systems, Business Statistics, Data Analysis Fundamentals, Information Systems Design, Introduction to Machine Learning' },
+      { t:'pair', l:'Example College of Finance and Economics', r:'Sep 2016 - Jun 2020' },
+      { t:'pair', l:'BBA in Accounting | Full-time', r:'Hangzhou', b:0 },
+      { t:'text', l:'GPA:3.50/4.00 | College Second Class Scholarship | Third Prize, College Business Case Competition' }
     ]},
     { title:'PROFESSIONAL EXPERIENCE', rows:[
-      { t:'pair', l:'PricewaterhouseCoopers (PwC) Zhong Tian LLP Shenzhen Branch', r:'Oct 2023 - Sep 2026' },
-      { t:'pair', l:'Senior Auditor', r:'Shenzhen', b:0 },
-      { t:'text', l:'Covered financial services, TMT and manufacturing sectors, with focus on risk control, valuation modelling, business analysis and accounting treatments; applied Python, SQL and Power BI to automate audit procedures and improve efficiency.' },
-      { t:'bullet', l:'Financial Asset Valuation: Performed fair value validation for 20+ unlisted equity investments using DCF, FCFF/WACC, comparable company analysis and backsolve methods; applied Black-Scholes for OPM equity allocation and DLOM estimation; led valuation framework reviews for 20+ private equity funds covering 50+ direct investments, improving efficiency by 40%.' },
-      { t:'bullet', l:'Internal Control: Proficient in SOX and C-SOX; led risk identification, walkthroughs and control testing across full business cycles in multiple industries; built an end-to-end manufacturing internal control framework covering production, costing and inventory, improving cost variance calculation to daily granularity.' },
-      { t:'bullet', l:'Financial Asset Impairment: Led full-scope review of RMB 14 billion credit assets, flagged two default-risk loans totaling RMB 240 million, and cross-validated five-category loan classification with 95%+ rating accuracy; built IFRS 9 classification matrix and multi-scenario DCF impairment model, optimized IRB rating assumptions including PD/LGD, and increased provision coverage by 12 percentage points.' },
-      { t:'bullet', l:'Data Analytics: Processed 100,000+ journal entries using SQL and five high-risk screening rules, identifying 150+ abnormal transactions across 56 consolidated entities; built a Python-scraped bond rating and interest rate valuation benchmark database, improving benchmarking efficiency by 40%; used Stata multiple regression to identify key revenue drivers.' },
-      { t:'bullet', l:'Consolidation & Accounting Standards: Prepared consolidated financial statements for multiple groups; developed VBA + SQL automation tools to batch-process thousands of intercompany eliminations, improving efficiency by 50%; supported IFRS / US GAAP dual-compliance disclosures; led teams to issue 10+ group audit reports covering seven subsidiaries, identified accounting and internal control deficiencies, and provided implementation and optimization solutions for revenue recognition and financial instruments standards across industries.' }
+      { t:'pair', l:'Example Technology Co., Ltd.', r:'Jul 2022 - Sep 2026' },
+      { t:'pair', l:'Financial Analyst', r:'Shanghai', b:0 },
+      { t:'text', l:'Supported finance and reporting work covering monthly close, budget variance analysis, group consolidation and process improvement; used Excel, SQL and Python for day-to-day data handling.' },
+      { t:'bullet', l:'Monthly Close & Variance Analysis: Supported monthly closing and budget variance analysis, produced the monthly business review pack and followed up on variance explanations.' },
+      { t:'bullet', l:'Consolidation: Assisted with group consolidated statements, intercompany reconciliation and elimination entries.' },
+      { t:'bullet', l:'Data Reconciliation: Used SQL to reconcile business ledgers against the financial ledger, logged differences and tracked them to closure.' },
+      { t:'bullet', l:'Internal Control: Supported process walkthroughs and sample testing, prepared testing workpapers and remediation trackers, and built a basic expense review checklist.' },
+      { t:'bullet', l:'Process Automation: Wrote Python scripts to automate repetitive data preparation and reduce manual handling time; supported a finance-system rollout by drafting requirement notes and completing data validation.' }
     ]},
     { title:'PROJECT EXPERIENCE', rows:[
-      { t:'pair', l:'Job Application Workspace & Course Notes Agent Skill', r:'' },
-      { t:'bullet', l:'Built a personal job application workspace from scratch with Claude Code, Node.js / Express backend and single-page frontend; integrated DeepSeek LLM API for JD analysis, resume bullet refinement and interview question generation; parsed 1,500+ job postings from Excel files and supported PDF export.' },
-      { t:'bullet', l:'Developed a “Course Notes Organization” Agent Skill to convert postgraduate course PDFs into structured bilingual lesson pages in English and Chinese, with line-by-line algorithm explanations, auto-graded exercises and an embedded Pyodide-powered runnable coding workspace, covering five courses.' }
+      { t:'pair', l:'Sample Python Data-Processing Script · Personal Practice', r:'' },
+      { t:'bullet', l:'Wrote a Python script that reads spreadsheets, cleans fields and produces standardised summary tables.' },
+      { t:'bullet', l:'Packaged the common processing steps into a reusable script template with short usage notes.' }
     ]},
     { title:'Internship experience', rows:[
-      { t:'pair', l:'PricewaterhouseCoopers (PwC) Zhong Tian LLP Shenzhen Branch', r:'Jan 2022 - Mar 2022' },
-      { t:'pair', l:'Audit Intern', r:'Shenzhen', b:0 },
-      { t:'bullet', l:'Participated in the annual audit of an H-share listed bank; performed audit procedures for 8+ accounts, including breakdown schedules, audit adjustments, fluctuation analysis, disclosure review, recalculation and vouching; prepared confirmation control sheets and managed 200+ confirmations.' },
-      { t:'pair', l:'Huaxing Certified Public Accountants', r:'Jun 2021 - Sep 2021' },
-      { t:'pair', l:'Audit Intern', r:'Fuzhou', b:0 },
-      { t:'bullet', l:'Participated in a special net asset audit for a construction engineering company; prepared working papers for six categories of receivables and payables, drafted reclassification entries, reviewed ageing schedules, reconciled intercompany balances line by line, and prepared confirmations and vouching; completed nearly 30% of the team’s foundational audit work and received strong recognition.' },
-      { t:'pair', l:'Ping An Insurance (Group) Company of China', r:'Jul 2020 - Sep 2020' },
-      { t:'pair', l:'Assistant Client Manager', r:'Fuzhou', b:0 },
-      { t:'bullet', l:'Scored 96 in onboarding training, ranking top 5%; led an eight-member team to first place and received the “Outstanding Team” certificate; assisted trainers with three case analyses and one to two product briefings daily; supported pre-job training for nearly 100 new hires, achieving an 80%+ final exam pass rate.' }
+      { t:'pair', l:'Example CPA Firm', r:'Jan 2021 - Mar 2021' },
+      { t:'pair', l:'Audit Intern', r:'Shanghai', b:0 },
+      { t:'bullet', l:'Supported an annual audit; performed account breakdown checks, voucher sampling and variance analysis, and prepared audit workpapers for filing.' },
+      { t:'pair', l:'Example Consulting Co., Ltd.', r:'Jun 2020 - Sep 2020' },
+      { t:'pair', l:'Finance Intern', r:'Hangzhou', b:0 },
+      { t:'bullet', l:'Supported a special audit; prepared working papers for intercompany balances, reviewed ageing schedules and reconciled balances line by line.' },
+      { t:'pair', l:'Example Trading Co., Ltd.', r:'Jul 2019 - Sep 2019' },
+      { t:'pair', l:'Finance Assistant Intern', r:'Hangzhou', b:0 },
+      { t:'bullet', l:'Assisted with day-to-day vouchers and expense claims, maintained ledgers and filing records, and supported the team with routine administrative tasks.' }
     ]},
     { title:'Skills certificate', rows:[
-      { t:'bullet', l:'Certifications: Microsoft MOS Excel expert certification, Microsoft MTA python international certification, English CET-6,CET-4' },
-      { t:'bullet', l:'Languages: English (IELTS 7.5 & English), Cantonese (fluent), Mandarin (mother tongue)' },
-      { t:'bullet', l:'Skills: Familiar with Office software, SQL, Python, PowerBI, Wind Terminal, Node.js / Express, LLM API Integration, Pyodide' }
+      { t:'bullet', l:'Certifications: English CET-6, CET-4, National Computer Rank Examination Level 2' },
+      { t:'bullet', l:'Languages: English, Mandarin (mother tongue)' },
+      { t:'bullet', l:'Skills: Familiar with Office software, SQL, Python, PowerBI, basic financial modelling' }
     ]}
   ]
 };
@@ -1539,7 +1482,7 @@ function cvHtml(){
   const lib = state.resources.resumes||[];
   const kindLabel = { zh:'简体中文（深圳）', tw:'繁體中文（香港）', en:'English（香港/外企）' }[kind] || kind;
   return `<div class="panel">
-    <h4 class="panel-title">📐 简历排版 <span class="opt-in">与「CV-Ji Ziyue 20260915 / CV-纪子悦 20260912」同版式 · 点任意文字直接改</span></h4>
+    <h4 class="panel-title">📐 简历排版 <span class="opt-in">与内置简历版式一致 · 点任意文字直接改</span></h4>
     <div class="row" style="margin-bottom:8px">
       <label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;margin:0">版式语言
         <select id="cv-kind" style="max-width:190px;padding:4px 6px">
@@ -2149,7 +2092,7 @@ function tkModal(title, rows, onOk){
 function openTrackerNew(){
   tkModal('手动新增投递记录', `
     <div class="grid grid-2">
-      <label>公司 *<input id="n-company" placeholder="PwC"></label>
+      <label>公司 *<input id="n-company" placeholder="示例公司"></label>
       <label>岗位<input id="n-title" placeholder="Product Manager Intern"></label>
     </div>
     <label>网申链接<input id="n-url" placeholder="https://..."></label>
@@ -2209,57 +2152,57 @@ function openTrackerFromJobs(){
    ============================================================ */
 const APPLY_SCHEMA = [
   { g:'身份', hint:'英文表单用「英文姓名 / First / Last」，中文表单用「中文姓名 / 姓 / 名」', f:[
-    ['fullName',   '中文姓名',            '纪子悦'],
-    ['fullNameEn', '英文姓名 Full Name',  'Ji Ziyue'],
-    ['lastNameEn', 'Last Name（英文表单）','Ji'],
-    ['firstNameEn','First Name（英文表单）','Ziyue'],
-    ['lastName',   '姓（中文表单）',       '纪'],
-    ['firstName',  '名（中文表单）',       '子悦'],
-    ['preferredName','常用名 / Preferred Name','Sophia'],
+    ['fullName',   '中文姓名',            '张三'],
+    ['fullNameEn', '英文姓名 Full Name',  'Zhang San'],
+    ['lastNameEn', 'Last Name（英文表单）','Zhang'],
+    ['firstNameEn','First Name（英文表单）','San'],
+    ['lastName',   '姓（中文表单）',       '张'],
+    ['firstName',  '名（中文表单）',       '三'],
+    ['preferredName','常用名 / Preferred Name','Alex'],
     ['gender',     '性别 Gender',          'Female'],
     ['nationality','国籍 Nationality',     'Chinese'],
   ]},
   { g:'联系方式', f:[
-    ['email',      '邮箱',                 'sophiaji2001@gmail.com'],
-    ['phone',      '手机',                 '13635260153'],
+    ['email',      '邮箱',                 'zhangsan@example.com'],
+    ['phone',      '手机',                 '13800000000'],
     ['phoneCountryCode','电话区号',        '+86'],
     ['wechat',     '微信',                 ''],
-    ['linkedin',   'LinkedIn',             'https://www.linkedin.com/in/ziyueji0806'],
+    ['linkedin',   'LinkedIn',             'https://www.linkedin.com/in/zhangsan'],
     ['github',     'GitHub',               ''],
     ['website',    '个人网站 / 作品集',     ''],
   ]},
   { g:'地址', f:[
-    ['city',       '城市（英文）',          'Shenzhen'],
-    ['cityZh',     '城市（中文）',          '深圳'],
-    ['state',      '省 / 州',              'Guangdong'],
+    ['city',       '城市（英文）',          'Shanghai'],
+    ['cityZh',     '城市（中文）',          '上海'],
+    ['state',      '省 / 州',              'Shanghai'],
     ['country',    '国家（英文）',          'China'],
     ['countryZh',  '国家（中文）',          '中国'],
     ['postalCode', '邮编',                 ''],
     ['address',    '详细地址',             ''],
   ]},
   { g:'教育（当前 / 最高学历）', f:[
-    ['school',     '学校（英文）',          'The University of Hong Kong'],
-    ['schoolZh',   '学校（中文）',          '香港大学'],
+    ['school',     '学校（英文）',          'Example University'],
+    ['schoolZh',   '学校（中文）',          '示例大学'],
     ['degree',     '学位（英文）',          'Master of Science'],
     ['degreeZh',   '学位（中文）',          '硕士'],
-    ['major',      '专业（英文）',          'Computer Science (E-Commerce and Internet Computing)'],
-    ['majorZh',    '专业（中文）',          '计算机科学（电子商务与互联网计算）'],
-    ['gpa',        'GPA',                  '3.62/4.00'],
-    ['eduStart',   '入学时间 (YYYY-MM)',    '2026-09'],
-    ['eduEnd',     '毕业时间 (YYYY-MM)',    '2027-11'],
-    ['school2',    '第二学历 · 学校',       'Hong Kong Baptist University'],
+    ['major',      '专业（英文）',          'Information Management'],
+    ['majorZh',    '专业（中文）',          '信息管理与信息系统'],
+    ['gpa',        'GPA',                  '3.50/4.00'],
+    ['eduStart',   '入学时间 (YYYY-MM)',    '2020-09'],
+    ['eduEnd',     '毕业时间 (YYYY-MM)',    '2022-06'],
+    ['school2',    '第二学历 · 学校',       'Example College of Finance and Economics'],
     ['degree2',    '第二学历 · 学位',       'Bachelor of Business Administration'],
     ['major2',     '第二学历 · 专业',       'Accounting'],
-    ['gpa2',       '第二学历 · GPA',        '3.62/4.00'],
-    ['eduStart2',  '第二学历 · 入学',       '2019-09'],
-    ['eduEnd2',    '第二学历 · 毕业',       '2023-06'],
+    ['gpa2',       '第二学历 · GPA',        '3.50/4.00'],
+    ['eduStart2',  '第二学历 · 入学',       '2016-09'],
+    ['eduEnd2',    '第二学历 · 毕业',       '2020-06'],
   ]},
   { g:'工作', f:[
-    ['company',    '公司（英文）',          'PricewaterhouseCoopers (PwC) Zhong Tian LLP'],
-    ['companyZh',  '公司（中文）',          '普华永道中天会计师事务所'],
-    ['jobTitle',   '职位（英文）',          'Senior Auditor'],
-    ['jobTitleZh', '职位（中文）',          '高级审计员'],
-    ['employmentStart','入职时间 (YYYY-MM)','2023-10'],
+    ['company',    '公司（英文）',          'Example Technology Co., Ltd.'],
+    ['companyZh',  '公司（中文）',          '示例科技有限公司'],
+    ['jobTitle',   '职位（英文）',          'Financial Analyst'],
+    ['jobTitleZh', '职位（中文）',          '财务分析师'],
+    ['employmentStart','入职时间 (YYYY-MM)','2022-07'],
     ['employmentEnd',  '离职时间 (YYYY-MM)','2026-09'],
     ['responsibilities','职责概述（长问题兜底用）',''],
   ]},
@@ -2270,10 +2213,10 @@ const APPLY_SCHEMA = [
     ['availableFrom', '最快可入职 (YYYY-MM)','2026-10'],
     ['workAuth',      '是否有权在当地工作',  'Yes'],
     ['requiresSponsorship','是否需要签证担保','No'],
-    ['visaStatus',    '签证状态说明',        'IANG (Immigration Arrangements for Non-local Graduates) eligible upon graduation'],
+    ['visaStatus',    '签证状态说明',        '按个人实际情况填写（工作许可 / 签证状态）'],
     ['howHeard',      '从何得知该职位',      'Company website'],
     ['willingToRelocate','是否接受异地',     'Yes'],
-    ['languages',     '语言能力',           'Mandarin (native), English (IELTS 7.5), Cantonese (fluent)'],
+    ['languages',     '语言能力',           'Mandarin (native), English (fluent)'],
   ]},
 ];
 
@@ -2370,116 +2313,114 @@ function bindApply(){
       : '⚠ 还没拿到令牌。刷新页面（F5）再试；仍失败就删掉 data/token.txt 后重启服务。';
   };
 }
-const DEFAULT_LINKEDIN = `# HEADLINE  (157 / 220 characters)
-Financial Analyst | Fintech & AI | PwC Senior Auditor (3 yrs) | Valuation · Credit Risk · Python · SQL · Power BI | HKU MSc E-Commerce & Internet Computing
+const DEFAULT_LINKEDIN = `# HEADLINE  (95 / 220 characters)
+Financial Analyst | Financial Reporting & Analysis | SQL · Python · Power BI | Process Automation
 
-# ABOUT  (~1,750 characters)
-I turn financial data into decisions — three years of Big Four audit depth, now paired with Python, SQL and hands-on AI tooling.
+# ABOUT  (~1,100 characters)
+I turn financial data into practical reporting — several years of finance and reporting experience, paired with SQL, Python and everyday automation.
 
-At PwC I audited banks, asset managers, TMT and manufacturing clients across RMB 14bn of loans, 20+ unlisted equity valuations and 20+ private-equity funds — then built the automation that made the work faster instead of just grinding through it.
+In my current role I support monthly close, budget variance analysis and group consolidation, and I build small automations that make recurring reporting work faster instead of just grinding through it.
 
 What I do best:
-· Credit risk: IRB rating models, PD / LGD / ECL, IFRS 9 classification, 5-tier loan classification
-· Valuation: DCF (FCFF / WACC), comparable companies, OPM, Black-Scholes, CAPM, DLOM
-· Accounting: multi-group consolidation, IFRS / US GAAP, revenue recognition, going-concern assessment
-· Data: SQL, Python, Power BI, Excel VBA, regression modelling, process automation
-· AI: LLM agents with function calling and RAG, built end to end
+· Reporting: monthly close support, budget vs actual variance analysis, management reporting packs
+· Accounting: group consolidation, intercompany reconciliation, elimination entries, core IFRS concepts
+· Controls: process walkthroughs, sample testing, testing workpapers and remediation tracking
+· Data: SQL, Python, Excel, Power BI, data cleaning and reconciliation
+· Automation: Python scripts and simple tooling that remove repetitive manual work
 
-Recent AI work: an LLM-powered financial-analysis agent (DeepSeek + Function Calling, FastAPI, Docker, GitHub Actions CI) that chains read-only SQL, standard financial models and accounting-standard RAG retrieval; plus a job-application workbench and a course-notes agent skill, both built with Claude Code.
+Education: MSc in Information Management (2020–2022); BBA in Accounting (GPA 3.50/4.00).
 
-Education: MSc in E-Commerce & Internet Computing at HKU (2026–2027); BBA (Hons) in Accounting, First-Class Honours, at HKBU (GPA 3.62/4.00).
+Languages: Mandarin (native) · English (CET-6)
 
-Languages: Mandarin (native) · Cantonese (fluent) · English (IELTS 7.5, full English-medium instruction)
+Key skills: Financial Analysis · Financial Reporting · Consolidation · Internal Controls · Excel · SQL · Python · Power BI · Data Analytics · Process Automation
 
-Key skills: Financial Analysis · Valuation · Credit Risk · IFRS · US GAAP · Consolidation · Internal Controls · Python · SQL · Power BI · Financial Modeling · Data Analytics · LLM · AI Agents · Automation
-
-Open to fintech, financial-analysis and financial-AI roles where domain depth and technical skills compound. Let's connect: sophiaji2001@gmail.com
+Open to financial-analysis, reporting and business-analysis roles. Feel free to connect.
 
 # EDUCATION
-The University of Hong Kong (HKU) — MSc, Computer Science (E-Commerce and Internet Computing)
-Sep 2026 - Nov 2027 · Hong Kong
-Field of study: E-Commerce / Internet Computing
+Example University — MSc, Information Management
+Sep 2020 - Jun 2022 · Shanghai, China
+Field of study: Information Management
 Grade: -
-Description: Coursework spans e-commerce technology, digital transformation, knowledge graphs, machine learning for business & e-commerce, and computational intelligence & machine learning. Focus on applying data and AI methods to financial and business problems.
+Description: Coursework spans database systems, business statistics, data analysis fundamentals, information systems design and an introduction to machine learning. Focus on applying data methods to business and finance problems.
 Activities: -
 
-Beijing Normal University - Hong Kong Baptist University United International College (BNU-HKBU UIC) — BBA (Honours), Accounting
-Sep 2019 - Jun 2023 · Zhuhai, Guangdong, China
+Example College of Finance and Economics — BBA, Accounting
+Sep 2016 - Jun 2020 · Hangzhou, China
 Field of study: Accounting
-Grade: First-Class Honours · GPA 3.62 / 4.00
-Description: Graduated with First-Class Honours. Built the accounting and financial-reporting foundation that later carried into Big Four audit work.
-Activities and societies: University Second-Class Scholarship; Student Internship & Practice Scholarship; 2nd Prize, Guangdong Provincial E-Commerce "Innovation, Creativity & Entrepreneurship" Challenge (11th edition)
+Grade: GPA 3.50 / 4.00
+Description: Built the accounting and financial-reporting foundation that later carried into finance and reporting work.
+Activities and societies: College Second-Class Scholarship; Third Prize, College Business Case Competition
 
 # EXPERIENCE
 
-PricewaterhouseCoopers (PwC) Zhong Tian LLP — Senior Auditor
-Oct 2023 - Sep 2026 · Shenzhen, Guangdong, China · Full-time
-(若实际办公城市不是深圳，改成实际城市)
+Example Technology Co., Ltd. — Financial Analyst
+Jul 2022 - Sep 2026 · Shanghai, China · Full-time
+(按实际办公城市填写)
 Description:
-Three years in PwC's audit practice serving banking, asset-management, TMT and manufacturing clients. Owned credit-risk reviews, valuation verification, internal-control testing, consolidated reporting and going-concern assessment, and automated the underlying analysis with Python, SQL, Power BI and VBA.
-· Credit risk & impairment: led a full credit review covering over 80% of the loan book (RMB 14bn); built a three-dimensional assessment framework (financial ratios, collateral valuation, adverse-media screening); optimised IRB rating models and PD/LGD parameters, lifting rating accuracy to 95%+ and the provision coverage ratio by 12pp; flagged two high-risk loans totalling RMB 240m that defaulted the following year
-· Valuation: verified fair value on 20+ unlisted equity investments using DCF (FCFF / WACC), comparable companies and Backsolve, with Black-Scholes OPM for equity allocation and DLOM for lack of marketability; led the valuation framework and SOP for 20+ private-equity funds (50+ direct projects), improving efficiency by 40%
-· Internal controls: SOX / C-SOX compliance across 6 control cycles for banks, securities firms and manufacturers; mapped 120+ process nodes and 30+ key control points into a risk-control matrix, and drove remediation of one material deficiency (period-end receivable/payable reclassification); built a production-cost-inventory control framework that raised cost-variance accuracy to daily granularity
-· Data & analytics: processed 100k+ journal entries in SQL with five high-risk entry filters, identifying 150+ anomalies across 56 consolidated entities; automated bond rating / interest-rate / financial-ratio ingestion in Python to build a valuation benchmark library; ran multivariate regression on business and financial data to identify the true revenue drivers behind a volume-up / revenue-down anomaly
-· Consolidation & accounting standards: led multi-group consolidated statement preparation, offsetting 1,000+ intercompany transactions with a self-built VBA + SQL tool (+50% efficiency) under IFRS / US GAAP; applied the five-step revenue model across ports, securities and manufacturing clients, quantifying a RMB 30m+ contract-liability impact from loyalty points; led issuance of 10+ group audit reports covering 7 subsidiaries
-· Going concern & profitability: performed segment-level gross-margin analysis and multi-year financial forecasting, assessing going-concern capacity for loss-making and new-business clients
+Finance and reporting work covering monthly close, budget variance analysis, group consolidation and process improvement, with recurring data handling automated using Excel, SQL and Python.
+· Monthly close & analysis: supported monthly closing and budget variance analysis, produced the monthly business review pack and followed up on variance explanations
+· Reporting packs: prepared monthly management reporting packs and supporting schedules for review
+· Consolidation: assisted with group consolidated statements, intercompany reconciliation and elimination entries
+· Data reconciliation: used SQL to reconcile business ledgers against the financial ledger, logged differences and tracked them to closure
+· Internal controls: supported process walkthroughs and sample testing, prepared testing workpapers and remediation trackers, and built a basic expense review checklist
+· Automation: wrote Python scripts to automate repetitive data preparation and reduce manual handling time; supported a finance-system rollout with requirement notes and data validation
 
-Skills: Credit Risk · Valuation · IFRS · US GAAP · Internal Controls · SOX · SQL · Python · Power BI · Excel VBA
+Skills: Financial Reporting · Consolidation · Internal Controls · SQL · Python · Excel · Power BI
 
-PricewaterhouseCoopers (PwC) Zhong Tian LLP — Audit Intern
-Jan 2022 - Mar 2022 · Full-time
-Description: Annual audit of a Hong Kong-listed bank.
-· Owned 8+ audit areas end to end: account breakdowns, audit adjustments, variance analysis, disclosure checks, recalculation and voucher sampling
-· Built the confirmation control sheet and managed 200+ bank and counterparty confirmations
+Example CPA Firm — Audit Intern
+Jan 2021 - Mar 2021 · Full-time
+Description: Annual audit support.
+· Performed account breakdown checks, voucher sampling and variance analysis for assigned accounts
+· Prepared audit workpapers and filing records
 
-Huaxing Certified Public Accountants — Audit Intern
-Jun 2021 - Sep 2021 · Full-time
-Description: Net-asset special audit for a construction company.
-· Prepared six intercompany balance working papers, reclassification adjusting entries, ageing analysis and transaction-by-transaction internal reconciliation
-· Issued intercompany confirmations and performed voucher sampling, completing roughly 30% of the team's foundational work
+Example Consulting Co., Ltd. — Finance Intern
+Jun 2020 - Sep 2020 · Full-time
+Description: Special audit support.
+· Prepared working papers for intercompany balances, including ageing schedules and balance reconciliation
+· Supported the team with routine documentation and filing
 
-Ping An Insurance (Group) Company of China — Client Manager Assistant
-Jul 2020 - Sep 2020 · Full-time
-Description: Branch-level client management support and new-hire training assistance.
-· Scored 96/100 (top 5%) on the onboarding exam and led an 8-person team to first place, earning the "Outstanding Team" certificate
-· Supported daily case analysis and product briefings; as trainer assistant helped roughly 100 new hires through pre-job training, with 80%+ passing the final assessment
+Example Trading Co., Ltd. — Finance Assistant Intern
+Jul 2019 - Sep 2019 · Full-time
+Description: Day-to-day finance support.
+· Assisted with vouchers and expense claims, and maintained ledgers and filing records
+· Supported monthly filing and basic data entry tasks
 
 # PROJECTS  (添加版块 → 附加信息 → 项目)
-Intelligent Financial Analysis Agent · Independent Project
+Sample Python Data-Processing Script · Personal Practice
 2026 - Present
-Built an LLM-powered financial-analysis agent with DeepSeek and Function Calling on FastAPI, containerised with Docker and tested in GitHub Actions CI (pytest). The agent chains read-only SQL (SQLite), standard financial models (margins, liquidity, leverage, ROE / ROA, turnover, WACC, DCF, IRR, ECL), TF-IDF RAG retrieval over accounting and valuation standards, and a sandboxed subprocess calculator, with read-only SQL constraints, timeouts and structured tool_trace observability, producing evidence-backed analysis reports.
-Skills: LLM · AI Agents · Function Calling · RAG · Python · FastAPI · Docker · CI/CD
+Wrote a Python script that reads spreadsheets, cleans fields and produces standardised summary tables; packaged the common processing steps into a reusable template with short usage notes.
+Skills: Python · Data Cleaning · Reporting Automation
 
-Job Application Workbench & Course-Notes Agent Skill · Built with Claude Code
-2026 - Present
-Built a personal job-application workbench from scratch (Node/Express backend, single-page frontend) integrating the DeepSeek LLM API for job-description analysis, experience polishing and interview-question generation, parsing a 1,500+ row job Excel sheet with PDF export. Also built a course-notes agent skill that splits lecture PDFs into bilingual lesson pages, explains algorithms line by line and auto-generates graded exercises with an in-browser runnable code workspace (Pyodide), covering 3 courses.
-Skills: LLM · AI Agents · Prompt Engineering · Node.js · Python
+Sample Visualisation Dashboard · Course Project
+2025 - Present
+Built a dashboard on sample open data showing the trend and composition of key metrics, with a short written summary of findings.
+Skills: Data Visualisation · Power BI · Data Analysis
 
 # SKILLS  (加满 50，前 3 置顶)
-Top 3 featured: Financial Analysis · Valuation · Python
-Financial Analysis · Valuation · Python · SQL · Power BI · Excel VBA · Financial Modeling · Credit Risk · IRB Rating Models · PD / LGD / ECL · IFRS 9 · IFRS · US GAAP · Consolidated Financial Statements · Revenue Recognition · Internal Controls · SOX · C-SOX · Risk Assessment · Data Analysis · Regression Analysis · Stata · SPSS · Microsoft Excel · Microsoft Office · DCF Valuation · Comparable Company Analysis · Black-Scholes · CAPM · Private Equity · Asset Management · Auditing · External Audit · Financial Reporting · Business Analysis · Process Automation · Dashboard Design · LLM · AI Agents · Function Calling · RAG · Prompt Engineering · FastAPI · Docker · Git · GitHub Actions · Node.js · Cantonese · Mandarin · English
+Top 3 featured: Financial Analysis · Financial Reporting · Python
+Financial Analysis · Financial Reporting · Python · SQL · Excel · Power BI · Financial Modeling · Consolidation · Intercompany Reconciliation · Internal Controls · Process Walkthroughs · Sample Testing · Budget Variance Analysis · Monthly Close · Management Reporting · Data Analysis · Data Cleaning · Data Reconciliation · Financial Statements · Microsoft Excel · Microsoft Office · Variance Analysis · Reporting Automation · Visualisation · Cost Analysis · Budgeting · Forecasting · Accounting · Financial Reporting Standards · Auditing · Audit Support · Working Papers · Documentation · Business Analysis · Requirement Notes · Data Validation · Stakeholder Communication · Process Improvement · Journal Entries · Account Reconciliation · Expense Review · Cash Flow Analysis · Power Query · Excel Formulas · Data Modelling · Attention to Detail · Critical Thinking · Teamwork · English · Mandarin
 
 # CERTIFICATIONS  (添加版块 → 附加信息 → 证书)
-· Microsoft Office Specialist (MOS) - Excel Expert
-· Microsoft Technology Associate (MTA) - Python
 · CET-6 (College English Test Band 6)
 · CET-4 (College English Test Band 4)
+· National Computer Rank Examination Level 2
+· Basic Accounting Certificate (foundation level)
 
 # KEYWORDS  (自然嵌在 Headline / About / Experience 里)
-Fintech · Financial Analysis · Credit Risk · Valuation · IFRS · US GAAP · Python · SQL · Power BI · Data Analytics · AI · LLM · AI Agent · Automation
+Financial Analysis · Financial Reporting · Monthly Close · Variance Analysis · Consolidation · Internal Controls · SQL · Python · Excel · Power BI · Data Analytics · Automation
 
 # ACTION ITEMS
-1. [ ] Headline 替换（157 字符，未超 220）
-2. [ ] About 整段粘贴（约 1,750 字符，未超 2,600）
-3. [ ] Education 加 2 条：HKU + BNU-HKBU UIC（学校/学位/专业/时间/成绩/活动 逐项填）
-4. [ ] Experience 加 4 条：PwC 高级审计员（1 段描述 + 6 bullet）、PwC 实习、华兴实习、平安实习
-5. [ ] PwC 高级审计员「地点」栏按实际办公城市改（默认填 Shenzhen）
-6. [ ] 添加版块 → 附加信息 → 项目，加「智能财务分析 Agent」「求职工作台」
+1. [ ] Headline 替换（95 字符，未超 220）
+2. [ ] About 整段粘贴（约 1,100 字符，未超 2,600）
+3. [ ] Education 加 2 条：示例大学 + 示例财经大学（学校/学位/专业/时间/成绩/活动 逐项填）
+4. [ ] Experience 加 4 条：示例科技有限公司 财务分析师（1 段描述 + 6 bullet）、示例会计师事务所实习、示例咨询实习、示例贸易实习
+5. [ ] 正式岗位「地点」栏按实际办公城市改（默认填 Shanghai）
+6. [ ] 添加版块 → 附加信息 → 项目，加「示例 Python 数据处理脚本」「示例可视化看板」
 7. [ ] 添加版块 → 附加信息 → 证书，加 4 条
-8. [ ] Skills 加满，前 3 置顶 Financial Analysis / Valuation / Python
-9. [ ] Featured 加「智能财务分析 Agent」「求职工作台」
-10. [ ] 打开 Open to Work（仅 recruiter 可见），选 Fintech / Financial Analyst / Business Analyst
-11. [ ] 找前 PwC 经理 / 客户求 5+ 条推荐`;
+8. [ ] Skills 加满，前 3 置顶 Financial Analysis / Financial Reporting / Python
+9. [ ] Featured 加「示例 Python 数据处理脚本」「示例可视化看板」
+10. [ ] 打开 Open to Work（仅 recruiter 可见），选 Financial Analyst / Business Analyst
+11. [ ] 找前经理 / 同事求 3+ 条推荐`;
 
 function renderLinkedin(){
   const el=$('#linkedin-app');

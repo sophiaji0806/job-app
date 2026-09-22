@@ -1,8 +1,91 @@
 [
-  {"id":"c-risk","title":"信贷风控 · 金融资产减值","icon":"🛡","desc":"IRB 内部评级、PD/LGD/ECL、IFRS9 减值、五级分类、押品估值","roles":["Fintech 金融分析师","财务BP","财务分析"],"strength":"强匹配","meta":"140亿信贷审阅 / 拨备+12pp / 评级95%+"},
-  {"id":"c-valuation","title":"估值建模","icon":"📊","desc":"DCF/FCFF/WACC、可比公司法、OPM、Black-Scholes、DLOM、CAPM","roles":["PE/VC 投资分析","投行承做","财务BP"],"strength":"强匹配","meta":"20+项股权投资 / 20余只基金 / 40%提效"},
-  {"id":"c-control","title":"内控与合规","icon":"🧾","desc":"SOX / C-SOX、穿行测试、控制测试、风险评估矩阵、ISA540","roles":["财务BP","内控/风控岗"],"strength":"强匹配","meta":"6大内控循环 / 30+控制点 / 重大缺陷整改"},
-  {"id":"c-data","title":"经营与财务数据分析","icon":"📈","desc":"SQL、Python、Power BI、SPSS、Stata 回归、财务建模、自动化","roles":["互联网商业分析","产品经理(金融)","财务分析"],"strength":"强匹配","meta":"SQL 10万+凭证 / 港口回归建模 / VBA+SQL 50%"},
-  {"id":"c-gaap","title":"合并报表 · 会计准则","icon":"🗂","desc":"合并抵消、IFRS/US GAAP、新收入准则、金融工具分类、持续经营评估","roles":["财务分析","财务BP"],"strength":"强匹配","meta":"200+笔抵消 / 双准则合规 / 3000万+积分影响"},
-  {"id":"c-ai","title":"AI · 数字化","icon":"🤖","desc":"Python/SQL 自动化实战 + 正在学习的后端/Agent 项目 + 商赛商业分析","roles":["互联网商业分析","数据岗","产品经理(金融)"],"strength":"转岗·经历少","meta":"诚实标注：学习中的 agent/后端，主打自动化与学习力"}
+  {
+    "id": "c-risk",
+    "title": "信贷风控 · 金融资产减值",
+    "icon": "🛡",
+    "desc": "IRB 内部评级、PD/LGD/ECL、IFRS9 减值、五级分类、押品估值",
+    "roles": [
+      "Fintech 金融分析师",
+      "财务BP",
+      "财务分析"
+    ],
+    "strength": "强匹配",
+    "meta": "示例：存量信贷全量审阅 / 拨备覆盖率改善 / 评级准确率提升"
+  },
+  {
+    "id": "c-valuation",
+    "title": "估值建模",
+    "icon": "📊",
+    "desc": "DCF/FCFF/WACC、可比公司法、OPM、Black-Scholes、DLOM、CAPM",
+    "roles": [
+      "PE/VC 投资分析",
+      "投行承做",
+      "财务BP"
+    ],
+    "strength": "强匹配",
+    "meta": "示例：30+ 项股权投资估值 / 15 只基金 / 效率 +40%"
+  },
+  {
+    "id": "c-control",
+    "title": "内控与合规",
+    "icon": "🧾",
+    "desc": "SOX / C-SOX、穿行测试、控制测试、风险评估矩阵、ISA540",
+    "roles": [
+      "财务BP",
+      "内控/风控岗"
+    ],
+    "strength": "强匹配",
+    "meta": "示例：8 大内控循环 / 50+ 控制点 / 缺陷整改跟踪"
+  },
+  {
+    "id": "c-data",
+    "title": "经营与财务数据分析",
+    "icon": "📈",
+    "desc": "SQL、Python、Power BI、SPSS、Stata 回归、财务建模、自动化",
+    "roles": [
+      "互联网商业分析",
+      "产品经理(金融)",
+      "财务分析"
+    ],
+    "strength": "强匹配",
+    "meta": "示例：SQL 处理 5 万+ 凭证 / 回归建模 / VBA+SQL 提效 50%"
+  },
+  {
+    "id": "c-gaap",
+    "title": "合并报表 · 会计准则",
+    "icon": "🗂",
+    "desc": "合并抵消、IFRS/US GAAP、新收入准则、金融工具分类、持续经营评估",
+    "roles": [
+      "财务分析",
+      "财务BP"
+    ],
+    "strength": "强匹配",
+    "meta": "示例：300+ 笔合并抵消 / IFRS & US GAAP 双准则 / 准则落地方案"
+  },
+  {
+    "id": "c-ai",
+    "title": "AI · 数字化",
+    "icon": "🤖",
+    "desc": "Python/SQL 自动化实战 + 正在学习的后端/Agent 项目 + 商赛商业分析",
+    "roles": [
+      "互联网商业分析",
+      "数据岗",
+      "产品经理(金融)"
+    ],
+    "strength": "转岗·经历少",
+    "meta": "示例：学习中的 Agent / 后端项目，主打自动化与学习力"
+  },
+  {
+    "id": "c-ipo",
+    "title": "港股IPO · 投行承做",
+    "icon": "🏦",
+    "desc": "港股主板递表项目财务核查、历史财务信息核验、招股书财务信息核对、管理层访谈与穿行、现场走访、存货监盘",
+    "roles": [
+      "投行承做 / IBD",
+      "ECM",
+      "审计 / 财务尽调"
+    ],
+    "strength": "新增·深度有限",
+    "meta": "示例：2 单港股 IPO / 每单 3-5 天现场 / 10+ 次走访与监盘"
+  }
 ]

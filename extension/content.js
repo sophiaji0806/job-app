@@ -177,7 +177,7 @@ function matchField(blob) {
 }
 
 /* ---------------- 取值 ---------------- */
-// 中文站点填中文名/中文学校，英文站点填英文，避免把「子悦」写进 First Name
+// 中文站点填中文名/中文学校，英文站点填英文，避免把「名」写进 First Name
 const ZH_PAGE = (() => {
   try {
     const h = location.hostname || '';

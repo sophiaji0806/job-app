@@ -7,5 +7,9 @@ data/tmp/
 data/seed/material.json
 data/seed/证据库.md
 
+# Personal backups and one-off scripts (contain private data)
+*.bak
+scripts/
+
 # Dependencies
 node_modules/
