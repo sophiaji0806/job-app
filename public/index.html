@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>纪子悦 · 求职工作台</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <div>
+        <div class="brand-name">求职工作台</div>
+        <div class="brand-sub">纪子悦 · 26Fall 港大 · E-commerce &amp; Internet Computing</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="config-state" id="configState" title="AI 配置状态">API 未配置</div>
+      <button class="btn btn-primary" id="btn-settings">⚙ 设置</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="material">① 个人素材库</button>
+    <button class="tab" data-tab="knowledge">② 知识库</button>
+    <button class="tab" data-tab="resume">③ 简历 · 机会库 · 面试</button>
+    <button class="tab" data-tab="tracker">④ 投递进度</button>
+    <button class="tab" data-tab="linkedin">⑤ LinkedIn / 个人主页</button>
+    <button class="tab" data-tab="apply">⑥ 网申助手</button>
+  </nav>
+
+  <main class="main" id="main">
+    <!-- 模块 1：个人素材库 -->
+    <section class="module active" id="mod-material">
+      <div class="mod-head">
+        <h2>个人素材库</h2>
+        <p class="mod-sub">把经历整理成「每类岗位都能用」的素材 · 挖掘更多经历 · 推荐职业方向</p>
+      </div>
+      <div id="material-app"></div>
+    </section>
+
+    <!-- 模块 2：知识库 -->
+    <section class="module" id="mod-knowledge">
+      <div class="mod-head">
+        <h2>知识库</h2>
+        <p class="mod-sub">面试会被问到的专业知识点 · 逐句代码示例 · 分类导航 + 快速搜索定位</p>
+      </div>
+      <div id="knowledge-app"></div>
+    </section>
+
+    <!-- 模块 3：简历 / 机会库 / 面试 -->
+    <section class="module" id="mod-resume">
+      <div class="mod-head">
+        <h2>简历 · 机会库 · 面试</h2>
+        <p class="mod-sub">生成中/英文简历与 Cover Letter · 从岗位机会库一键更新/抓 JD · 定制投递 · 面试练习</p>
+      </div>
+      <div id="resume-app"></div>
+    </section>
+
+    <!-- 模块 4：投递进度 -->
+    <section class="module" id="mod-tracker">
+      <div class="mod-head">
+        <h2>投递进度管理</h2>
+        <p class="mod-sub">跟踪每个岗位从投递到 offer 的全流程 · 与机会库联动</p>
+      </div>
+      <div id="tracker-app"></div>
+    </section>
+
+    <!-- 模块 5：LinkedIn -->
+    <section class="module" id="mod-linkedin">
+      <div class="mod-head">
+        <h2>LinkedIn / 个人主页</h2>
+        <p class="mod-sub">基于经历生成 LinkedIn 个人文案 + 一个个人简历网页</p>
+      </div>
+      <div id="linkedin-app"></div>
+    </section>
+
+    <!-- 模块 6：网申助手 -->
+    <section class="module" id="mod-apply">
+      <div class="mod-head">
+        <h2>网申助手</h2>
+        <p class="mod-sub">维护网申字段档案 · Chrome 扩展读它自动填表 · 只填不提交，填过的字段全部高亮供你复核</p>
+      </div>
+      <div id="apply-app"></div>
+    </section>
+  </main>
+
+  <!-- 设置弹窗 -->
+  <div class="modal-overlay" id="settingsModal" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>⚙ 设置 — AI 接口（默认 DeepSeek）</h3>
+        <button class="btn btn-ghost" id="btn-close-settings">✕</button>
+      </div>
+      <div class="modal-body">
+        <label>API Key
+          <input type="password" id="cfg-key" placeholder="sk-…（DeepSeek key）" autocomplete="off" />
+        </label>
+        <label>Base URL
+          <input type="text" id="cfg-base" placeholder="https://api.deepseek.com" />
+        </label>
+        <label>模型
+          <input type="text" id="cfg-model" placeholder="deepseek-chat" list="model-list" />
+          <datalist id="model-list">
+            <option value="deepseek-chat"></option>
+            <option value="deepseek-reasoner"></option>
+          </datalist>
+        </label>
+        <div class="hint">Key 只保存在本机 config.json，不随应用传给任何外部服务。DeepSeek 为 OpenAI 兼容接口，国内直连。</div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="btn-test" title="发送一条测试请求">🔌 测试连接</button>
+        <span id="test-status"></span>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" id="btn-save-config">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 全局 toast -->
+  <div id="toast" class="toast" hidden></div>
+
+  <div class="build-note" id="buildNote"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

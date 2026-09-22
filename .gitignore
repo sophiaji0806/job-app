@@ -1,0 +1,11 @@
+# Secrets / personal data
+config.json
+data/token.txt
+data/store/
+data/uploads/
+data/tmp/
+data/seed/material.json
+data/seed/证据库.md
+
+# Dependencies
+node_modules/

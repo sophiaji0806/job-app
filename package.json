@@ -1,0 +1,14 @@
+{
+  "name": "job-app",
+  "version": "1.0.0",
+  "description": "纪子悦个人求职助手 — 素材库/知识库/简历/投递/面试 一站式工作台",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "xlsx": "^0.18.5"
+  }
+}
